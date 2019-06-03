@@ -1,0 +1,159 @@
+[
+  {
+    "UserSays": "hi|hello|hey",
+    "ActionSuccessResponse": "Aloha|Holla|Hi|Hello|Hey|Hey, what's app?|Hey, how are you doing?",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserSays": "how are you?|how're you?|how do you do?",
+    "ActionSuccessResponse": "I'm fine! Thank you.|Feeling good!",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserSays": "i'm fine|im good|im ok",
+    "ActionSuccessResponse": "Great! What can I help you with?",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserSays": "book room|room book|book",
+    "ActionSuccessResponse": "",
+    "ActionFailureResponse": "Which room?",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": "",
+    "UserRespondedTo": ""
+  },
+  {
+    "UserSays": "\\b(book[\\sroom]*)\\s(\\w[\\s\\w]*)\\s(from)\\s(\\w)\\s(to)\\s(\\w)\\b",
+    "ActionSuccessResponse": "Booked",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": "Store(0,1,2)",
+    "UserRespondedTo": ""
+  },
+  {
+    "UserSays": "*",
+    "ActionSuccessResponse": "I'm sorry! I could not understand you.",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": "",
+    "UserRespondedTo": ""
+  },
+  {
+    "UserSays": "who wrote the invisible man?",
+    "ActionSuccessResponse": "H. G. Wells",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserSays": "there|hi there?|hi there|are you there?",
+    "ActionSuccessResponse": "Yes, I'm online.",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserSays": "",
+    "ActionSuccessResponse": "hmmmmmm",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserSays": "clear",
+    "ActionSuccessResponse": "Oh! cleared it all!",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "clear",
+    "ServerAction": ""
+  },
+  {
+    "UserSays": "cls",
+    "ActionSuccessResponse": "Clear screen! That was from DOS right...han!",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "clear",
+    "ServerAction": ""
+  },
+  {
+    "UserSays": "test",
+    "ActionSuccessResponse": "OK! But what?",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserSays": "test message",
+    "ActionSuccessResponse": "I receied it.|I am alive if you see this message.",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserSays": "who created you?",
+    "ActionSuccessResponse": "Vinod created me on 01-Jun'19",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserSays": "tell me joke|tell joke|tell a joke|joke",
+    "ActionSuccessResponse": "A witch eating sand placing it between two bread slices becomes a sandwich|",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+
+  {
+    "UserSays": "show bookings|list bookings|show bookings for today|list bookings for today",
+    "ActionSuccessResponse": "ServerActionResult",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": "BookingParser.List(today)"
+  }
+
+  /*
+    book room any from 1-2|
+    book any room from 1 to 2
+    book training room from 1 to 2
+
+    show bookings for today|show bookings for tomorrow|show bookings for 1-Jun-2019
+    Utercht is booked for 1:00pm-2:00pm for meeting by Vinod
+  */
+]

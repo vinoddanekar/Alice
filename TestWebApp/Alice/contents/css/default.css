@@ -1,0 +1,67 @@
+﻿body {
+    padding:0px; margin:0px;
+    font-family: Verdana;
+}
+#content {
+    
+}
+#header {
+    height: 35px;
+    /*background-color: #80deea;*/
+    border-bottom: 1px dotted #9E9E9E;
+    margin-top: -3px;
+}
+
+     h3 {
+        margin: 3px;
+        line-height: 35px;
+        font-weight: normal;
+    }
+
+#responseBox {
+    top: 40px;
+    left: 5px;
+    right: 5px;
+    bottom: 60px;
+    position: absolute;
+    overflow: auto;
+}
+
+#chatBox {
+    position: fixed;
+    margin-left: 6px;
+    height: 30px;
+    bottom: 15px;
+    display: block;
+    padding: 2px;
+    outline: none;
+    font-size: 24px;
+    border: solid 2px #81d4fa87;
+    border-radius: 6px;
+}
+
+.response {
+clear:both;
+}
+.userResponse, .aliceResponse {
+    margin: 0px 15px 5px 15px;
+    padding: 5px;
+    border-radius: 8px;
+    display: inline-block;
+    clear: both;
+}
+
+.userResponse {
+    text-align: right;
+    background-color: #FAFAFA;
+    float: right;
+}
+
+.aliceResponse {
+    background-color: #E1F5FE;
+}
+
+    .aliceResponse span, .userResponse span {
+        font-weight: bold;
+        display:none;
+    }
