@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 
 namespace TestWebApp.Alice.Fx
 {
     public class Alice
-    {        
+    {
         public Response Ask(string message)
         {
             Response response;
@@ -23,12 +25,12 @@ namespace TestWebApp.Alice.Fx
             {
                 entry = FindEntry(communications, "*");
             }
-            Response response = ProcessEntry(entry);
+            Response response = ProcessEntry(entry, message);
 
             return response;
         }
                 
-        private Response ProcessEntry(Communication entry)
+        private Response ProcessEntry(Communication entry, string userMessage)
         {
             Response response = new Response();
             response.ActionToPerform = entry.ClientAction;
@@ -40,8 +42,19 @@ namespace TestWebApp.Alice.Fx
             else if (entry.ServerAction == "BookingParser.List(today)")
             {
                 BookingAliceParser parser = new BookingAliceParser();
-                string message = parser.ListBookings(DateTime.Now);
-                response.Message = message;
+                string responseMessage = parser.ListBookings(DateTime.Now);
+                response.Message = responseMessage;
+            }            
+            if(entry.RequestFormat == "regex")
+            {
+                Regex regex = new Regex(entry.UserSays);
+                Match match = regex.Match(userMessage);
+                StringBuilder sb = new StringBuilder();
+                foreach (var item in match.Groups)
+                {
+                    sb.Append(item.ToString() + "<br/>");
+                }
+                response.Message = sb.ToString();
             }
 
             return response;
@@ -55,7 +68,8 @@ namespace TestWebApp.Alice.Fx
             for (int entryIndex = 0; entryIndex < entries.Count; entryIndex++)
             {
                 currenEntry = entries[entryIndex];
-                bool isEntryMatched = MatchEntry(entries, currenEntry, message);
+                EntryMatcher matcher = new EntryMatcher();
+                bool isEntryMatched = matcher.MatchEntry(currenEntry, message);
 
                 if (isEntryMatched)
                 {
@@ -67,20 +81,7 @@ namespace TestWebApp.Alice.Fx
             return matchedEntry;
         }
 
-        private bool MatchEntry(IList<Communication> entries, Communication entry, string message)
-        {
-            string[] userMessagesToMatch = entry.UserSays.Split('|');
-
-            for (int messageIndex = 0; messageIndex < userMessagesToMatch.Length; messageIndex++)
-            {
-                if (message == userMessagesToMatch[messageIndex])
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
+        
 
     }
 }

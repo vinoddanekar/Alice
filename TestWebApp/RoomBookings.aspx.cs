@@ -29,11 +29,11 @@ namespace TestWebApp
         {
             /*
              https://www.regextester.com/95367
-             \b(book[\sroom]*)\s(\w[\s\w]*)\s(from)\s(\w)\s(to)\s(\w)\b
+           Wrong =>  \b(book[\sroom]*)\s(\w[\s\w]*)\s(from)\s(\w)\s(to)\s(\w)\b
              https://regexr.com/
              \b(book[\sroom]*)\s(\w[\s\w]*)\s(from)\s(\w)[\s](to|-)[\s](\w)\b
 
-            book room amsterdam from 1 to 2
+book room amsterdam from 1 to 2
 book amsterdam from 1 to 2
 book training room from 1 to 2
 book room training room from 1 to 2
@@ -50,7 +50,7 @@ book room training room from 1 - 2
            // Regex exp2 = new Regex(@"\b(\w*book\w*)\s(\w*)\s(\w*from\w*)\s(\w)\s(\w*to\w*)\s(\w)\b");
             string text2 = "book room training from 1 to 2";
             Match match2 = exp.Match(text2);
-
+                
         }
 
         private void FillRoomList(DropDownList dropDownList)

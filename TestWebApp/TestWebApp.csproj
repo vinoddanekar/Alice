@@ -92,6 +92,7 @@
     <Compile Include="Alice\Fx\BookingAliceParser.cs" />
     <Compile Include="Alice\Fx\BotExperience.cs" />
     <Compile Include="Alice\Fx\Communication.cs" />
+    <Compile Include="Alice\Fx\EntryMatcher.cs" />
     <Compile Include="Alice\Fx\Response.cs" />
     <Compile Include="RoomBookings\Room.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,9 +104,7 @@
       <DependentUpon>RoomBookings.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Code\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

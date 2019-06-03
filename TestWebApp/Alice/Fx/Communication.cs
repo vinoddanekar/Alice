@@ -15,6 +15,7 @@ namespace TestWebApp.Alice.Fx
         public string ServerAction { get; set; }
         public string ClientAction { get; set; }
         public string UserRespondedTo { get; set; }
+        public string RequestFormat { get; set; }
 
         public string GetRandomSuccessResponse()
         {

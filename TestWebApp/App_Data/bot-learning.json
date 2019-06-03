@@ -37,14 +37,15 @@
     "UserRespondedTo": ""
   },
   {
-    "UserSays": "\\b(book[\\sroom]*)\\s(\\w[\\s\\w]*)\\s(from)\\s(\\w)\\s(to)\\s(\\w)\\b",
+    "UserSays": "\\b(book)\\s(\\w[\\s\\w]*)\\s(from)\\s(\\w*)[\\s](to|-)[\\s](\\w*)\\b",
     "ActionSuccessResponse": "Booked",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
     "Validation": "",
     "ClientAction": "",
     "ServerAction": "Store(0,1,2)",
-    "UserRespondedTo": ""
+    "UserRespondedTo": "",
+    "RequestFormat": "regex"
   },
   {
     "UserSays": "*",
