@@ -87,6 +87,7 @@
     <Compile Include="Alice\alice-chat.aspx.designer.cs">
       <DependentUpon>alice-chat.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Alice\Common\AliceCommand.cs" />
     <Compile Include="Alice\Fx\Alice.cs" />
     <Compile Include="Alice\Fx\AliceLearningRepository.cs" />
     <Compile Include="Alice\Fx\BookingAliceParser.cs" />

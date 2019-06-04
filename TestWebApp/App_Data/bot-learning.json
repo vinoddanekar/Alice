@@ -9,7 +9,7 @@
     "ServerAction": ""
   },
   {
-    "UserSays": "how are you?|how're you?|how do you do?",
+    "UserSays": "how are you?|how're you?|how do you do?|how r you|h r u|hru|how r u",
     "ActionSuccessResponse": "I'm fine! Thank you.|Feeling good!",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",

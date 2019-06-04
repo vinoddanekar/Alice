@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using TestWebApp.Alice.Common;
 
 namespace TestWebApp.Alice.Fx
 {
@@ -29,7 +30,7 @@ namespace TestWebApp.Alice.Fx
 
             return response;
         }
-                
+
         private Response ProcessEntry(Communication entry, string userMessage)
         {
             Response response = new Response();
@@ -44,20 +45,37 @@ namespace TestWebApp.Alice.Fx
                 BookingAliceParser parser = new BookingAliceParser();
                 string responseMessage = parser.ListBookings(DateTime.Now);
                 response.Message = responseMessage;
-            }            
+            }
             if(entry.RequestFormat == "regex")
             {
+                BookingAliceParser parser = new BookingAliceParser();
+
+                AliceCommand command = new AliceCommand();
+                
                 Regex regex = new Regex(entry.UserSays);
                 Match match = regex.Match(userMessage);
-                StringBuilder sb = new StringBuilder();
-                foreach (var item in match.Groups)
+                for (int i =0; i<match.Groups.Count;i++)
                 {
-                    sb.Append(item.ToString() + "<br/>");
+                    AliceCommandParameter param = new AliceCommandParameter();
+                    param.Name = i.ToString();
+                    param.Value = match.Groups[i].Value;
+                    command.Parameters.Add(param);
                 }
-                response.Message = sb.ToString();
+                response.Message = parser.Book(command);
             }
 
             return response;
+        }
+
+        private string ShowListResponse(Regex regex, string userMessage)
+        {
+            Match match = regex.Match(userMessage);
+            StringBuilder sb = new StringBuilder();
+            foreach (var item in match.Groups)
+            {
+                sb.Append(item.ToString() + "<br/>");
+            }
+            return sb.ToString();
         }
 
         private Communication FindEntry(IList<Communication> entries, string message)
@@ -80,8 +98,7 @@ namespace TestWebApp.Alice.Fx
 
             return matchedEntry;
         }
-
-        
-
     }
+
+
 }

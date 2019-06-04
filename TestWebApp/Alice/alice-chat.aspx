@@ -10,24 +10,61 @@
 
     <script type="text/javascript">
         var responseBox;
+        var recentMessages = [];
+        var currentRecentMessageIndex = 0;
+        function addToRecent(message) {
+            if (recentMessages.length == 10) {
+                recentMessages.shift();
+            }
+            recentMessages.push(message);
+            currentRecentMessageIndex = 9;
+        }
+
+        function getPrevMessage() {
+            currentRecentMessageIndex = currentRecentMessageIndex - 1; 
+            if (currentRecentMessageIndex < 0 || currentRecentMessageIndex >= recentMessages.length) {
+                currentRecentMessageIndex = recentMessages.length - 1;
+            }
+            
+            return recentMessages[currentRecentMessageIndex];
+        }
+
+        function getNextMessage() {
+            currentRecentMessageIndex = currentRecentMessageIndex + 1; 
+            if (currentRecentMessageIndex >= recentMessages.length || currentRecentMessageIndex < 0) {
+                currentRecentMessageIndex = 0;
+            }
+            return recentMessages[currentRecentMessageIndex];
+        }
+
         $(document).ready(function () {
             adjustLayout();
             responseBox = $('#responseBox');
 
-            $('#chatBox').keypress(function (event) {
+            $('#chatBox').keydown(function (event) {
                 var keycode = (event.keyCode ? event.keyCode : event.which);
                 if (keycode == '13') {
                     var message = $(this).val();
+                    addToRecent(message);
                     processMessage(message);
+                    $(this).val("");
+                }
+                else if (keycode == "38") {
+                    var message = getPrevMessage();
+                    $(this).val(message);
+                }
+                else if (keycode == "40") {
+                    var message = getNextMessage();
+                    $(this).val(message);
+                }
+                else if (keycode == "27") {
                     $(this).val("");
                 }
             });
 
             $(window).resize(function () {
                 adjustLayout();
-            });
-
-            
+            });            
         });
 
         function scrollResponseToBottom() {

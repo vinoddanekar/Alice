@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using TestWebApp.Alice.Common;
 
 namespace TestWebApp.Alice.Fx
 {
@@ -43,5 +44,41 @@ namespace TestWebApp.Alice.Fx
 
             return sb.ToString();
         }
+
+        /*
+         *0 book am from 1 - 2
+         *1 book
+         *2 am
+         *3 from
+         *4 1
+         *5 -
+         *6 2
+         */
+        public string Book(AliceCommand command)
+        {
+            BotExperience experience = new BotExperience();
+            BookingRequest request = new BookingRequest();
+            request.RoomName = command.Parameters[2].Value;
+            request.BookFrom = experience.FormatTime(command.Parameters[4].Value);
+            request.BookTo = experience.FormatTime(command.Parameters[6].Value);
+            request.BookFrom = Convert.ToDateTime(DateTime.Now.ToString("dd-MMM-yy ") + request.BookFrom.ToString("HH:mm tt"));
+            request.BookTo = Convert.ToDateTime(DateTime.Now.ToString("dd-MMM-yy ") + request.BookTo.ToString("HH:mm tt"));
+
+            Booking booking;
+            string response;
+            try
+            {
+                booking = _repository.Book(request);
+                response = "Booked";
+            }
+            catch (Exception ex)
+            {
+
+                response = "Error: " + ex.Message;
+            }
+            
+            return response;
+        }
+        
     }
 }

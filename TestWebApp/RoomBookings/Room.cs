@@ -135,7 +135,7 @@ namespace TestWebApp
 
     }
        
-    internal class Booking
+    public class Booking
     {
         public string RoomName { get; set; }
         public DateTime BookedFrom { get; set; }
@@ -151,7 +151,7 @@ namespace TestWebApp
         }
     }
 
-    internal class BookingRequest
+    public class BookingRequest
     {
         public string RoomName { get; set; }
         public DateTime BookFrom { get; set; }
