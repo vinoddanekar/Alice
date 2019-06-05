@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="alice-chat.aspx.cs" Inherits="TestWebApp.Alice.Alice_Chat" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="alice-chat.aspx.cs" Inherits="TestWebApp.AliceInterface.Alice_Chat" %>
 
 <!DOCTYPE html>
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace TestWebApp
+namespace Alice.Framework
 {
     public class BotExperience
     {

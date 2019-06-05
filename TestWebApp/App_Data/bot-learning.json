@@ -1,6 +1,6 @@
 [
   {
-    "UserSays": "hi|hello|hey",
+    "UserMessage": "hi|hello|hey",
     "ActionSuccessResponse": "Aloha|Holla|Hi|Hello|Hey|Hey, what's app?|Hey, how are you doing?",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
@@ -9,7 +9,7 @@
     "ServerAction": ""
   },
   {
-    "UserSays": "how are you?|how're you?|how do you do?|how r you|h r u|hru|how r u",
+    "UserMessage": "how are you?|how're you?|how do you do?|how r you|h r u|hru|how r u",
     "ActionSuccessResponse": "I'm fine! Thank you.|Feeling good!",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
@@ -18,7 +18,7 @@
     "ServerAction": ""
   },
   {
-    "UserSays": "i'm fine|im good|im ok",
+    "UserMessage": "i'm fine|im good|im ok",
     "ActionSuccessResponse": "Great! What can I help you with?",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
@@ -27,7 +27,7 @@
     "ServerAction": ""
   },
   {
-    "UserSays": "book room|room book|book",
+    "UserMessage": "book room|room book|book",
     "ActionSuccessResponse": "",
     "ActionFailureResponse": "Which room?",
     "ValidationFailureResponse": "",
@@ -37,7 +37,7 @@
     "UserRespondedTo": ""
   },
   {
-    "UserSays": "\\b(book)\\s(\\w[\\s\\w]*)\\s(from)\\s(\\w*)[\\s](to|-)[\\s](\\w*)\\b",
+    "UserMessage": "\\b(book)\\s(\\w[\\s\\w]*)\\s(from)\\s(\\w*)[\\s](to|-)[\\s](\\w*)\\b",
     "ActionSuccessResponse": "Booked",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
@@ -48,7 +48,7 @@
     "RequestFormat": "regex"
   },
   {
-    "UserSays": "*",
+    "UserMessage": "*",
     "ActionSuccessResponse": "I'm sorry! I could not understand you.",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
@@ -58,7 +58,7 @@
     "UserRespondedTo": ""
   },
   {
-    "UserSays": "who wrote the invisible man?",
+    "UserMessage": "who wrote the invisible man?",
     "ActionSuccessResponse": "H. G. Wells",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
@@ -67,7 +67,7 @@
     "ServerAction": ""
   },
   {
-    "UserSays": "there|hi there?|hi there|are you there?",
+    "UserMessage": "there|hi there?|hi there|are you there?",
     "ActionSuccessResponse": "Yes, I'm online.",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
@@ -76,7 +76,7 @@
     "ServerAction": ""
   },
   {
-    "UserSays": "",
+    "UserMessage": "",
     "ActionSuccessResponse": "hmmmmmm",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
@@ -85,7 +85,7 @@
     "ServerAction": ""
   },
   {
-    "UserSays": "clear",
+    "UserMessage": "clear",
     "ActionSuccessResponse": "Oh! cleared it all!",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
@@ -94,7 +94,7 @@
     "ServerAction": ""
   },
   {
-    "UserSays": "cls",
+    "UserMessage": "cls",
     "ActionSuccessResponse": "Clear screen! That was from DOS right...han!",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
@@ -103,7 +103,7 @@
     "ServerAction": ""
   },
   {
-    "UserSays": "test",
+    "UserMessage": "test",
     "ActionSuccessResponse": "OK! But what?",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
@@ -112,7 +112,7 @@
     "ServerAction": ""
   },
   {
-    "UserSays": "test message",
+    "UserMessage": "test message",
     "ActionSuccessResponse": "I receied it.|I am alive if you see this message.",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
@@ -121,7 +121,7 @@
     "ServerAction": ""
   },
   {
-    "UserSays": "who created you?",
+    "UserMessage": "who created you?",
     "ActionSuccessResponse": "Vinod created me on 01-Jun'19",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
@@ -130,7 +130,7 @@
     "ServerAction": ""
   },
   {
-    "UserSays": "tell me joke|tell joke|tell a joke|joke",
+    "UserMessage": "tell me joke|tell joke|tell a joke|joke",
     "ActionSuccessResponse": "A witch eating sand placing it between two bread slices becomes a sandwich|",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
@@ -140,7 +140,7 @@
   },
 
   {
-    "UserSays": "show bookings|list bookings|show bookings for today|list bookings for today",
+    "UserMessage": "show bookings|list bookings|show bookings for today|list bookings for today",
     "ActionSuccessResponse": "ServerActionResult",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",

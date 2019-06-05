@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Alice.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
-using TestWebApp.Alice.Common;
 
-namespace TestWebApp.Alice.Fx
+namespace RoomBookingLib
 {
     public class BookingAliceParser
     {
@@ -54,13 +54,13 @@ namespace TestWebApp.Alice.Fx
          *5 -
          *6 2
          */
-        public string Book(AliceCommand command)
+        public string Book(AliceRequest command)
         {
-            BotExperience experience = new BotExperience();
+           // BotExperience experience = new BotExperience();
             BookingRequest request = new BookingRequest();
             request.RoomName = command.Parameters[2].Value;
-            request.BookFrom = experience.FormatTime(command.Parameters[4].Value);
-            request.BookTo = experience.FormatTime(command.Parameters[6].Value);
+           // request.BookFrom = experience.FormatTime(command.Parameters[4].Value);
+            //request.BookTo = experience.FormatTime(command.Parameters[6].Value);
             request.BookFrom = Convert.ToDateTime(DateTime.Now.ToString("dd-MMM-yy ") + request.BookFrom.ToString("HH:mm tt"));
             request.BookTo = Convert.ToDateTime(DateTime.Now.ToString("dd-MMM-yy ") + request.BookTo.ToString("HH:mm tt"));
 

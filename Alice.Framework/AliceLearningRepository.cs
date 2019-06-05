@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Web;
+using Alice.Common;
 
-namespace TestWebApp.Alice.Fx
+namespace Alice.Framework
 {
     public class AliceLearningRepository
     {

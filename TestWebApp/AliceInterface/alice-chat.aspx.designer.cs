@@ -7,8 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestWebApp.Alice {
-    
+namespace TestWebApp.AliceInterface
+{   
     
     public partial class Alice_Chat {
         

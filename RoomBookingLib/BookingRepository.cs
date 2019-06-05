@@ -3,28 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 
-namespace TestWebApp
+namespace RoomBookingLib
 {
-    internal class Room
-    {
-        public string Name { get; set; }
-        public int DisplayIndex { get; set; }
-
-        public Room()
-        {
-
-        }
-
-        public Room(string name, int displayIndex)
-        {
-            Name = name;
-            DisplayIndex = displayIndex;
-        }
-    }
-
-    internal class BookingRepository
+    public class BookingRepository
     {
         private string DataFile
         {
@@ -93,7 +77,7 @@ namespace TestWebApp
         }
 
         public IList<Booking> ListBookings(DateTime dateFrom, DateTime dateTo)
-        {            
+        {
             IList<Booking> bookings = List();
             IList<Booking> selectedBookings = ListBookings(bookings, dateFrom, dateTo);
 
@@ -131,90 +115,6 @@ namespace TestWebApp
             }
 
             return bookingsForSlot;
-        }
-
-    }
-       
-    public class Booking
-    {
-        public string RoomName { get; set; }
-        public DateTime BookedFrom { get; set; }
-        public DateTime BookedTo { get; set; }
-        public string BookedBy { get; set; }
-        public string BookedFor { get; set; }
-        public DateTime BookedOn { get; set; }
-
-        public string BookRangeToString()
-        {
-            string range = BookedFrom.ToString("hh:mm tt") + " - " + BookedTo.ToString("hh:mm tt");
-            return range;
-        }
-    }
-
-    public class BookingRequest
-    {
-        public string RoomName { get; set; }
-        public DateTime BookFrom { get; set; }
-        public DateTime BookTo { get; set; }
-        public string BookedBy { get; set; }
-        public string BookedFor { get; set; }
-        public DateTime BookedOn { get; }
-
-        public BookingRequest()
-        {
-            BookedOn = DateTime.Now;
-        }
-
-        public Booking ToBooking()
-        {
-            Booking booking = new Booking
-            {
-                BookedBy = BookedBy,
-                BookedFor = BookedFor,
-                BookedFrom = BookFrom,
-                BookedOn = BookedOn,
-                BookedTo = BookTo,
-                RoomName = RoomName
-            };
-
-            return booking;
-        }
-    }
-
-    internal class RoomRepository
-    {
-        public IList<Room> List()
-        {
-            IList<Room> rooms = new List<Room>
-            {
-                new Room("Training room", 1),
-                new Room("Amsterdam", 1),
-                new Room("Endoven", 1),
-                new Room("Utrecht", 1)
-            };
-
-            return rooms;
-        }
-    }
-
-    internal class BookingRequestProvider
-    {
-        public IList<BookingRequest> GetBulkRequests(string roomName, string bookie, string subject, string requestedDates, string requestedSlots)
-        {
-            string[] dates = requestedDates.Split(',');
-            throw new NotImplementedException();
-        }
-
-        private DateTime[] GetDateTimes(string input)
-        {
-            string[] dates = input.Split(',');
-            DateTime[] dateTimes = new DateTime[dates.Length];
-            for (int i = 0; i < dates.Length; i++)
-            {
-                dateTimes[i] = Convert.ToDateTime(dates[i]);
-            }
-
-            return dateTimes;
         }
     }
 }

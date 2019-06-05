@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
-using TestWebApp.Alice.Common;
+using Alice.Common;
 
-namespace TestWebApp.Alice.Fx
+namespace Alice.Framework
 {
     public class Alice
     {
@@ -40,29 +40,30 @@ namespace TestWebApp.Alice.Fx
             {
                 response.Message = entry.GetRandomSuccessResponse();
             }
-            else if (entry.ServerAction == "BookingParser.List(today)")
-            {
-                BookingAliceParser parser = new BookingAliceParser();
-                string responseMessage = parser.ListBookings(DateTime.Now);
-                response.Message = responseMessage;
-            }
-            if(entry.RequestFormat == "regex")
-            {
-                BookingAliceParser parser = new BookingAliceParser();
+            //TODO Move to room bookings
+            //else if (entry.ServerAction == "BookingParser.List(today)")
+            //{
+            //    BookingAliceParser parser = new BookingAliceParser();
+            //    string responseMessage = parser.ListBookings(DateTime.Now);
+            //    response.Message = responseMessage;
+            //}
+            //if(entry.RequestFormat == "regex")
+            //{
+            //    BookingAliceParser parser = new BookingAliceParser();
 
-                AliceCommand command = new AliceCommand();
+            //    AliceRequest command = new AliceRequest();
                 
-                Regex regex = new Regex(entry.UserSays);
-                Match match = regex.Match(userMessage);
-                for (int i =0; i<match.Groups.Count;i++)
-                {
-                    AliceCommandParameter param = new AliceCommandParameter();
-                    param.Name = i.ToString();
-                    param.Value = match.Groups[i].Value;
-                    command.Parameters.Add(param);
-                }
-                response.Message = parser.Book(command);
-            }
+            //    Regex regex = new Regex(entry.UserMessage);
+            //    Match match = regex.Match(userMessage);
+            //    for (int i =0; i<match.Groups.Count;i++)
+            //    {
+            //        AliceRequestParameter param = new AliceRequestParameter();
+            //        param.Name = i.ToString();
+            //        param.Value = match.Groups[i].Value;
+            //        command.Parameters.Add(param);
+            //    }
+            //    response.Message = parser.Book(command);
+            //}
 
             return response;
         }
@@ -99,6 +100,4 @@ namespace TestWebApp.Alice.Fx
             return matchedEntry;
         }
     }
-
-
 }

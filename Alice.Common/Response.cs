@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace TestWebApp.Alice.Fx
+namespace Alice.Common
 {
     public class Response
     {
@@ -21,4 +18,5 @@ namespace TestWebApp.Alice.Fx
             ActionToPerform = actionToPerform;
         }
     }
+
 }
