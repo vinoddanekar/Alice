@@ -5,6 +5,12 @@ using System.Text;
 
 namespace Alice.Common
 {
+    public interface IAliceRequest
+    {
+        string RequestMessage { get; set; }
+        List<AliceRequestParameter> Parameters { get; }
+    }
+
     public class AliceRequest
     {
         public string RequestMessage { get; set; }

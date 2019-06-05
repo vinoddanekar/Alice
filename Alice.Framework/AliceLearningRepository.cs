@@ -19,19 +19,19 @@ namespace Alice.Framework
             }
         }
 
-        public IList<Communication> List()
+        public IList<Command> List()
         {
-            IList<Communication> communications;
+            IList<Command> communications;
             if (!File.Exists(DataFile))
-                return new List<Communication>();
+                return new List<Command>();
 
             using (StreamReader r = new StreamReader(DataFile))
             {
                 string json = r.ReadToEnd();
                 if (string.IsNullOrWhiteSpace(json))
-                    communications = new List<Communication>();
+                    communications = new List<Command>();
                 else
-                    communications = JsonConvert.DeserializeObject<List<Communication>>(json);
+                    communications = JsonConvert.DeserializeObject<List<Command>>(json);
             }
 
             return communications;

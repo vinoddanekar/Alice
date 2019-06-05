@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alice.cs" />
+    <Compile Include="AliceContext.cs" />
     <Compile Include="AliceLearningRepository.cs" />
     <Compile Include="BotExperience.cs" />
     <Compile Include="Class1.cs" />

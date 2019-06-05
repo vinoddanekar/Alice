@@ -2,6 +2,12 @@
 
 namespace Alice.Common
 {
+    public interface IAliceResponse
+    {
+        string Message { get; set; }
+        string ActionToPerform { get; set; }
+    }
+
     public class Response
     {
         public string Message { get; set; }

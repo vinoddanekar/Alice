@@ -20,8 +20,8 @@ namespace Alice.Framework
         private Response ProcessMessage(string message)
         {
             AliceLearningRepository repository = new AliceLearningRepository();
-            IList<Communication> communications = repository.List();
-            Communication entry = FindEntry(communications, message);
+            IList<Command> communications = repository.List();
+            Command entry = FindEntry(communications, message);
             if(entry == null)
             {
                 entry = FindEntry(communications, "*");
@@ -31,7 +31,7 @@ namespace Alice.Framework
             return response;
         }
 
-        private Response ProcessEntry(Communication entry, string userMessage)
+        private Response ProcessEntry(Command entry, string userMessage)
         {
             Response response = new Response();
             response.ActionToPerform = entry.ClientAction;
@@ -79,10 +79,10 @@ namespace Alice.Framework
             return sb.ToString();
         }
 
-        private Communication FindEntry(IList<Communication> entries, string message)
+        private Command FindEntry(IList<Command> entries, string message)
         {
-            Communication currenEntry = null;
-            Communication matchedEntry = null;
+            Command currenEntry = null;
+            Command matchedEntry = null;
 
             for (int entryIndex = 0; entryIndex < entries.Count; entryIndex++)
             {

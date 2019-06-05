@@ -15,6 +15,9 @@ namespace TestWebApp.AliceInterface
         [WebMethod]
         public static Response Ask(string message)
         {
+            RoomBookingLib.AliceRequestHandler handler = new RoomBookingLib.AliceRequestHandler();
+            Alice.Framework.AliceContext.Current.Register(handler);
+
             Alice.Framework.Alice bot = new Alice.Framework.Alice();
             Response response = bot.Ask(message);
 

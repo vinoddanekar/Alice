@@ -2,7 +2,7 @@
 
 namespace Alice.Common
 {
-    public class Communication
+    public class Command
     {
         public string UserMessage { get; set; }
         public string ServerAction { get; set; }

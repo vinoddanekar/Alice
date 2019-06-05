@@ -9,7 +9,7 @@ namespace Alice.Framework
 {
     public class EntryMatcher
     {
-        public bool MatchEntry(Communication entry, string message)
+        public bool MatchEntry(Command entry, string message)
         {
             bool matchResult = false;
             if (entry.RequestFormat == "regex")
@@ -22,7 +22,7 @@ namespace Alice.Framework
             return matchResult;
         }
 
-        private bool MatchExact(Communication entry, string message)
+        private bool MatchExact(Command entry, string message)
         {
             string[] userMessagesToMatch = entry.UserMessage.Split('|');
 
@@ -37,7 +37,7 @@ namespace Alice.Framework
             return false;
         }
 
-        private bool MatchRegex(Communication entry, string message)
+        private bool MatchRegex(Command entry, string message)
         {
             Regex exp = new Regex(entry.UserMessage);
             bool matchResult = exp.IsMatch(message);
