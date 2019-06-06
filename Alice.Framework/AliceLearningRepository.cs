@@ -8,15 +8,27 @@ using Alice.Common;
 
 namespace Alice.Framework
 {
-    public class AliceLearningRepository
+    public class AliceCommandRepository
     {
+        private string _fileName;
         private string DataFile
         {
             get
             {
-                string virtualPath = "~/app_data/bot-learning.json";
-                return HttpContext.Current.Server.MapPath(virtualPath);
+                string filePath = HttpContext.Current.Server.MapPath("~/app_data/");
+                filePath = Path.Combine(filePath, _fileName);
+                return filePath;
             }
+        }
+
+        public AliceCommandRepository()
+        {
+            _fileName = "bot-learning.json";
+        }
+
+        public AliceCommandRepository(string fileName)
+        {
+            _fileName = fileName;
         }
 
         public IList<Command> List()

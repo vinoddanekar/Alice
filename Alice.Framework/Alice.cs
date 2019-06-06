@@ -10,94 +10,35 @@ namespace Alice.Framework
 {
     public class Alice
     {
-        public Response Ask(string message)
+        public IAliceResponse Ask(string userMessage)
         {
-            Response response;
-            response = ProcessMessage(message);
+            IAliceResponse response;
+            response = ProcessMessage(userMessage);
             return response;
         }
 
-        private Response ProcessMessage(string message)
+        private IAliceResponse ProcessMessage(string userMessage)
         {
-            AliceLearningRepository repository = new AliceLearningRepository();
-            IList<Command> communications = repository.List();
-            Command entry = FindEntry(communications, message);
-            if(entry == null)
-            {
-                entry = FindEntry(communications, "*");
-            }
-            Response response = ProcessEntry(entry, message);
+            CommandFinder finder = new CommandFinder();
+            IAliceRequestHandler handler;
+            Command command = finder.FindOrDefault(userMessage, out handler);
 
-            return response;
-        }
-
-        private Response ProcessEntry(Command entry, string userMessage)
-        {
-            Response response = new Response();
-            response.ActionToPerform = entry.ClientAction;
-
-            if (string.IsNullOrEmpty(entry.ServerAction))
-            {
-                response.Message = entry.GetRandomSuccessResponse();
-            }
-            //TODO Move to room bookings
-            //else if (entry.ServerAction == "BookingParser.List(today)")
-            //{
-            //    BookingAliceParser parser = new BookingAliceParser();
-            //    string responseMessage = parser.ListBookings(DateTime.Now);
-            //    response.Message = responseMessage;
-            //}
-            //if(entry.RequestFormat == "regex")
-            //{
-            //    BookingAliceParser parser = new BookingAliceParser();
-
-            //    AliceRequest command = new AliceRequest();
-                
-            //    Regex regex = new Regex(entry.UserMessage);
-            //    Match match = regex.Match(userMessage);
-            //    for (int i =0; i<match.Groups.Count;i++)
-            //    {
-            //        AliceRequestParameter param = new AliceRequestParameter();
-            //        param.Name = i.ToString();
-            //        param.Value = match.Groups[i].Value;
-            //        command.Parameters.Add(param);
-            //    }
-            //    response.Message = parser.Book(command);
-            //}
+            CommandProcessor processor = new CommandProcessor(handler, command, userMessage);
+            IAliceResponse response = processor.Process();
 
             return response;
         }
 
-        private string ShowListResponse(Regex regex, string userMessage)
-        {
-            Match match = regex.Match(userMessage);
-            StringBuilder sb = new StringBuilder();
-            foreach (var item in match.Groups)
-            {
-                sb.Append(item.ToString() + "<br/>");
-            }
-            return sb.ToString();
-        }
 
-        private Command FindEntry(IList<Command> entries, string message)
-        {
-            Command currenEntry = null;
-            Command matchedEntry = null;
-
-            for (int entryIndex = 0; entryIndex < entries.Count; entryIndex++)
-            {
-                currenEntry = entries[entryIndex];
-                EntryMatcher matcher = new EntryMatcher();
-                bool isEntryMatched = matcher.MatchEntry(currenEntry, message);
-
-                if (isEntryMatched)
-                {
-                    matchedEntry = currenEntry;
-                    break;
-                }
-            }
-
-            return matchedEntry;
-        }
+        //private string ShowListResponse(Regex regex, string userMessage)
+        //{
+        //    Match match = regex.Match(userMessage);
+        //    StringBuilder sb = new StringBuilder();
+        //    foreach (var item in match.Groups)
+        //    {
+        //        sb.Append(item.ToString() + "<br/>");
+        //    }
+        //    return sb.ToString();
+        //}
     }
 }

@@ -34,5 +34,7 @@ namespace Alice.Framework
 
             _registeredHandlers.Add(handler);
         }
+
+        public IList<IAliceRequestHandler> Handlers { get { return _registeredHandlers; } }
     }
 }

@@ -44,7 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AliceClient.cs" />
+    <Compile Include="AliceRequestHandler.cs" />
     <Compile Include="Booking.cs" />
     <Compile Include="BookingAliceParser.cs" />
     <Compile Include="BookingRepository.cs" />

@@ -49,6 +49,9 @@
     <Compile Include="AliceLearningRepository.cs" />
     <Compile Include="BotExperience.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="CommandFinder.cs" />
+    <Compile Include="CommandProcessor.cs" />
+    <Compile Include="DefaultAliceRequestHandler.cs" />
     <Compile Include="EntryMatcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

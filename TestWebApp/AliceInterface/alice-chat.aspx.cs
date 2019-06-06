@@ -13,13 +13,13 @@ namespace TestWebApp.AliceInterface
     public partial class Alice_Chat : System.Web.UI.Page
     {   
         [WebMethod]
-        public static Response Ask(string message)
+        public static IAliceResponse Ask(string message)
         {
             RoomBookingLib.AliceRequestHandler handler = new RoomBookingLib.AliceRequestHandler();
             Alice.Framework.AliceContext.Current.Register(handler);
 
             Alice.Framework.Alice bot = new Alice.Framework.Alice();
-            Response response = bot.Ask(message);
+            IAliceResponse response = bot.Ask(message);
 
             return response;
         }

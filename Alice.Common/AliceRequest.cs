@@ -11,7 +11,7 @@ namespace Alice.Common
         List<AliceRequestParameter> Parameters { get; }
     }
 
-    public class AliceRequest
+    public class AliceRequest : IAliceRequest
     {
         public string RequestMessage { get; set; }
 

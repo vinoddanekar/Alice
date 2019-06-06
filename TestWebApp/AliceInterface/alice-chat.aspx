@@ -118,6 +118,9 @@
                 success: processReply,
                 failure: function (response) {
                     alert(response.d);
+                },
+                error: function (response) {
+                    processErrorReply(response);
                 }
             });
         }
@@ -131,6 +134,13 @@
             }
 
             showAliceMessage(message);
+            scrollResponseToBottom();
+        }
+
+        function processErrorReply(response) {
+            var errorMessage = 'Oops! I got an error: ' + response.responseJSON.Message;
+                        
+            showAliceMessage(errorMessage);
             scrollResponseToBottom();
         }
 
