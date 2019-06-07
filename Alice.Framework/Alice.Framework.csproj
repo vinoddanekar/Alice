@@ -48,12 +48,15 @@
     <Compile Include="AliceContext.cs" />
     <Compile Include="AliceLearningRepository.cs" />
     <Compile Include="BotExperience.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="CommandFinder.cs" />
     <Compile Include="CommandProcessor.cs" />
     <Compile Include="DefaultAliceRequestHandler.cs" />
     <Compile Include="EntryMatcher.cs" />
+    <Compile Include="RegexTextMatchStrategy.cs" />
+    <Compile Include="ExactTextMatchStrategy.cs" />
+    <Compile Include="ITextMatchStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextMatchStrategyFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Alice.Common\Alice.Common.csproj">

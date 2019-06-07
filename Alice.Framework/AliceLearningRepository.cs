@@ -23,7 +23,6 @@ namespace Alice.Framework
 
         public AliceCommandRepository()
         {
-            _fileName = "bot-learning.json";
         }
 
         public AliceCommandRepository(string fileName)

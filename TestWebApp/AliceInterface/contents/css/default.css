@@ -65,3 +65,8 @@ clear:both;
         font-weight: bold;
         display:none;
     }
+
+.errorResponse{
+    background-color:#ff0000;
+    color:#fff;
+}

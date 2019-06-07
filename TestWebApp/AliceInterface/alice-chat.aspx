@@ -70,7 +70,7 @@
         function scrollResponseToBottom() {
             responseBox.animate({
                 scrollTop: responseBox.get(0).scrollHeight
-            }, 50);
+            }, 300);
         }
 
         function processMessage(message) {
@@ -90,6 +90,14 @@
         function showAliceMessage(message) {
             var aliceMessageTemplate = $('#aliceMessage').html();
             var messageToShow = aliceMessageTemplate.replace('{Message}', message);
+            responseBox.append(messageToShow);
+        }
+
+        function showAliceErrorMessage(message) {
+            var aliceMessageTemplate = $('#aliceMessage');
+            var aliceMessageTemplateHtml = aliceMessageTemplate.html();
+            
+            var messageToShow = aliceMessageTemplateHtml.replace('{Message}', message);
             responseBox.append(messageToShow);
         }
 
@@ -140,7 +148,7 @@
         function processErrorReply(response) {
             var errorMessage = 'Oops! I got an error: ' + response.responseJSON.Message;
                         
-            showAliceMessage(errorMessage);
+            showAliceErrorMessage(errorMessage);
             scrollResponseToBottom();
         }
 

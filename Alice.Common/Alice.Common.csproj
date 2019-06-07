@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AliceClient.cs" />
+    <Compile Include="IAliceRequestHandler.cs" />
     <Compile Include="AliceRequest.cs" />
     <Compile Include="AliceRequestParameter.cs" />
     <Compile Include="Response.cs" />

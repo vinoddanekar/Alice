@@ -22,7 +22,7 @@ namespace Alice.Framework
 
         private AliceContext()
         {
-            
+            Register(new DefaultAliceRequestHandler());
         }
 
         private List<IAliceRequestHandler> _registeredHandlers;

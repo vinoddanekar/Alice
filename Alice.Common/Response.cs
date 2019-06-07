@@ -8,17 +8,17 @@ namespace Alice.Common
         string ActionToPerform { get; set; }
     }
 
-    public class Response : IAliceResponse
+    public class AliceResponse : IAliceResponse
     {
         public string Message { get; set; }
         public string ActionToPerform { get; set; }
 
-        public Response()
+        public AliceResponse()
         {
 
         }
 
-        public Response(string message, string actionToPerform)
+        public AliceResponse(string message, string actionToPerform)
         {
             Message = message;
             ActionToPerform = actionToPerform;

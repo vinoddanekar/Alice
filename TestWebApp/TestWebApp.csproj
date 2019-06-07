@@ -65,7 +65,8 @@
     <Content Include="AliceInterface\contents\css\default.css" />
     <Content Include="AliceInterface\contents\js\jquery-3.4.1.min.js" />
     <Content Include="App_Data\room-bookings.json" />
-    <Content Include="App_Data\bot-learning.json" />
+    <Content Include="App_Data\DefaultRequests.json" />
+    <Content Include="App_Data\RoomBookingRequests.json" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
