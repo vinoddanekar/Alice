@@ -1,7 +1,7 @@
 [
   {
     "UserMessage": "book room|room book|book",
-    "ActionSuccessResponse": "",
+    "ActionSuccessResponse": "Which room?",
     "ActionFailureResponse": "Which room?",
     "ValidationFailureResponse": "",
     "Validation": "",
@@ -16,7 +16,7 @@
     "ValidationFailureResponse": "",
     "Validation": "",
     "ClientAction": "",
-    "ServerAction": "Store(0,1,2)",
+    "ServerAction": "BookRoom",
     "UserRespondedTo": "",
     "RequestFormat": "regex"
   },
@@ -27,9 +27,36 @@
     "ValidationFailureResponse": "",
     "Validation": "",
     "ClientAction": "",
-    "ServerAction": "BookingParser.List(today)"
-  }
+    "ServerAction": "ListBookings"
+  },
+  {
+    "UserMessage": "show my bookings|show rooms booked by me|list my bookings|list rooms booked by me",
+    "ActionSuccessResponse": "Sorry! Not implemented yet.",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserMessage": "show availability|show room availability|show available rooms",
+    "ActionSuccessResponse": "Sorry! Not implemented yet.",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
 
+  {
+    "UserMessage": "list rooms|show rooms",
+    "ActionSuccessResponse": "ServerActionResult",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": "ListRooms"
+  }
   /*
     book room any from 1-2|
     book any room from 1 to 2

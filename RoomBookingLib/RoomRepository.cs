@@ -9,14 +9,8 @@ namespace RoomBookingLib
     {
         public IList<Room> List()
         {
-            IList<Room> rooms = new List<Room>
-            {
-                new Room("Training room" ),
-                new Room("Amsterdam" ),
-                new Room("Endoven"),
-                new Room("Utrecht")
-            };
-
+            List<Room> rooms;
+            rooms = JsonFile<List<Room>>.Read(Config.Current.RoomDataFile);
             return rooms;
         }
     }

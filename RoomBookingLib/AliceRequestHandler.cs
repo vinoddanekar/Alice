@@ -10,13 +10,47 @@ namespace RoomBookingLib
     {
         public string RequestsDataFile { get { return "RoomBookingRequests.json"; } }
 
+        private IAliceResponse DefaultResponse
+        {
+            get
+            {
+                IAliceResponse response = new AliceResponse();
+                response.Message = "I could not serve this request.";
+
+                return response;
+            }
+        }
+
         public IAliceResponse Execute(IAliceRequest request)
         {
             IAliceResponse response;
-            response = ListBookings(request);
+
+            string serverAction = request.ServerAction.ToLower();
+            switch (serverAction)
+            {
+                case "listrooms":
+                    response = ListRooms();
+                    break;
+                case "listbookings":
+                    response = ListBookings(request);
+                    break;
+
+                default:
+                    response = DefaultResponse;
+                    break;
+            }
             
             return response;
-            throw new NotImplementedException("RoomBookingLib.AliceRequestHandler is not implemented");
+        }
+
+        private IAliceResponse ListRooms()
+        {
+            IAliceResponse response = new AliceResponse();
+            RoomRepository roomRepository = new RoomRepository();
+            IList<Room> rooms = roomRepository.List();
+            response.Message = ParseRooms(rooms);
+
+            return response;
         }
 
         private IAliceResponse ListBookings(IAliceRequest request)
@@ -55,6 +89,24 @@ namespace RoomBookingLib
                 sb.Append("</li>");
             }
             sb.Append("<ul>");
+
+            return sb.ToString();
+        }
+
+        private string ParseRooms(IList<Room> rooms)
+        {
+            StringBuilder sb = new StringBuilder();
+            if (rooms.Count == 0)
+                return "Surprising! There are no rooms! Take a looks at documentation.";
+
+            sb.Append("<ol>");
+            foreach (Room room in rooms)
+            {
+                sb.Append("<li>");
+                sb.AppendFormat("{0}", room.Name);
+                sb.Append("</li>");
+            }
+            sb.Append("<ol>");
 
             return sb.ToString();
         }

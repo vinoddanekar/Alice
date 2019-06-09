@@ -67,7 +67,8 @@ namespace Alice.Framework
         private IAliceRequest CreateRequest()
         {
             IAliceRequest request = new AliceRequest();
-            
+            request.ServerAction = _command.ServerAction;
+            request.RequestMessage = _userMessage;
             return request;
         }
 

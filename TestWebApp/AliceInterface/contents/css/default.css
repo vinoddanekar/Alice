@@ -70,3 +70,7 @@ clear:both;
     background-color:#ff0000;
     color:#fff;
 }
+.aliceResponse ul, .aliceResponse ol{
+    margin: 1em 1em 1em 1em;
+    padding: 0em 0em 0em 1em;
+}

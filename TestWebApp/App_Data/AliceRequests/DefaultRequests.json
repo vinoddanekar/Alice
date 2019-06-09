@@ -116,14 +116,5 @@
     "Validation": "",
     "ClientAction": "",
     "ServerAction": ""
-  },
-
-  /*
-    book room any from 1-2|
-    book any room from 1 to 2
-    book training room from 1 to 2
-
-    show bookings for today|show bookings for tomorrow|show bookings for 1-Jun-2019
-    Utercht is booked for 1:00pm-2:00pm for meeting by Vinod
-  */
+  }
 ]

@@ -12,6 +12,11 @@ namespace RoomBookingLib
         public string Name { get; set; }
         public bool CanBookExplicitely { get; set; }
 
+        public Room()
+        {
+
+        }
+
         public Room(string name)
         {
             Name = name;
