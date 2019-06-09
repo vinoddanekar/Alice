@@ -11,10 +11,10 @@ namespace RoomBookingLib
         {
             IList<Room> rooms = new List<Room>
             {
-                new Room("Training room", 1),
-                new Room("Amsterdam", 1),
-                new Room("Endoven", 1),
-                new Room("Utrecht", 1)
+                new Room("Training room" ),
+                new Room("Amsterdam" ),
+                new Room("Endoven"),
+                new Room("Utrecht")
             };
 
             return rooms;

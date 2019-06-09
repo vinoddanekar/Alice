@@ -10,17 +10,17 @@ namespace RoomBookingLib
     public class Room
     {
         public string Name { get; set; }
-        public int DisplayIndex { get; set; }
+        public bool CanBookExplicitely { get; set; }
 
-        public Room()
-        {
-
-        }
-
-        public Room(string name, int displayIndex)
+        public Room(string name)
         {
             Name = name;
-            DisplayIndex = displayIndex;
+        }
+
+        public Room(string name, bool canBookExplicitely)
+        {
+            Name = name;
+            CanBookExplicitely = canBookExplicitely;
         }
     }
 }

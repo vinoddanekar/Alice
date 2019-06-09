@@ -1,0 +1,129 @@
+[
+  {
+    "UserMessage": "hi|hello|hey",
+    "ActionSuccessResponse": "Aloha|Holla|Hi|Hello|Hey|Hey, what's app?|Hey, how are you doing?",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserMessage": "how are you?|how're you?|how do you do?|how r you|h r u|hru|how r u",
+    "ActionSuccessResponse": "I'm fine! Thank you.|Feeling good!",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserMessage": "i'm fine|im good|im ok",
+    "ActionSuccessResponse": "Great! What can I help you with?",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserMessage": "*",
+    "ActionSuccessResponse": "I'm sorry! I could not understand you.",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": "",
+    "UserRespondedTo": ""
+  },
+  {
+    "UserMessage": "who wrote the invisible man?",
+    "ActionSuccessResponse": "H. G. Wells",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserMessage": "there|hi there?|hi there|are you there?",
+    "ActionSuccessResponse": "Yes, I'm online.",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserMessage": "",
+    "ActionSuccessResponse": "hmmmmmm",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserMessage": "clear",
+    "ActionSuccessResponse": "Oh! cleared it all!",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "clear",
+    "ServerAction": ""
+  },
+  {
+    "UserMessage": "cls",
+    "ActionSuccessResponse": "Clear screen! That was from DOS right...han!",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "clear",
+    "ServerAction": ""
+  },
+  {
+    "UserMessage": "test",
+    "ActionSuccessResponse": "OK! But what?",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserMessage": "test message",
+    "ActionSuccessResponse": "I receied it.|I am alive if you see this message.",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserMessage": "who created you?",
+    "ActionSuccessResponse": "Vinod created me on 01-Jun'19",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  {
+    "UserMessage": "tell me joke|tell joke|tell a joke|joke",
+    "ActionSuccessResponse": "A witch eating sand placing it between two bread slices becomes a sandwich|",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+
+  /*
+    book room any from 1-2|
+    book any room from 1 to 2
+    book training room from 1 to 2
+
+    show bookings for today|show bookings for tomorrow|show bookings for 1-Jun-2019
+    Utercht is booked for 1:00pm-2:00pm for meeting by Vinod
+  */
+]

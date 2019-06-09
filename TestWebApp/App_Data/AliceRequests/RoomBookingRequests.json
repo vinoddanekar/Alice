@@ -1,0 +1,41 @@
+[
+  {
+    "UserMessage": "book room|room book|book",
+    "ActionSuccessResponse": "",
+    "ActionFailureResponse": "Which room?",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": "",
+    "UserRespondedTo": ""
+  },
+  {
+    "UserMessage": "\\b(book)\\s(\\w[\\s\\w]*)\\s(from)\\s(\\w*)[\\s](to|-)[\\s](\\w*)\\b",
+    "ActionSuccessResponse": "Booked",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": "Store(0,1,2)",
+    "UserRespondedTo": "",
+    "RequestFormat": "regex"
+  },
+  {
+    "UserMessage": "show bookings|list bookings|show bookings for today|list bookings for today",
+    "ActionSuccessResponse": "ServerActionResult",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": "BookingParser.List(today)"
+  }
+
+  /*
+    book room any from 1-2|
+    book any room from 1 to 2
+    book training room from 1 to 2
+
+    show bookings for today|show bookings for tomorrow|show bookings for 1-Jun-2019
+    Utercht is booked for 1:00pm-2:00pm for meeting by Vinod
+  */
+]

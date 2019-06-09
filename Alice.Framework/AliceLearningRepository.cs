@@ -15,7 +15,7 @@ namespace Alice.Framework
         {
             get
             {
-                string filePath = HttpContext.Current.Server.MapPath("~/app_data/");
+                string filePath = HttpContext.Current.Server.MapPath("~/app_data/AliceRequests");
                 filePath = Path.Combine(filePath, _fileName);
                 return filePath;
             }
