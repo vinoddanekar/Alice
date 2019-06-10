@@ -46,7 +46,7 @@ namespace RoomBookingLib
         {
             get
             {
-                return Path.Combine(DataPath, "Bookings");
+                return Path.Combine(DataPath, "Bookings.json");
             }
         }
     }

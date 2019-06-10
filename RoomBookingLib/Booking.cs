@@ -16,7 +16,7 @@ namespace RoomBookingLib
 
         public string BookRangeToString()
         {
-            string range = BookedFrom.ToString("hh:mm tt") + " - " + BookedTo.ToString("hh:mm tt");
+            string range = BookedFrom.ToString("hh:mm tt") + " to " + BookedTo.ToString("hh:mm tt");
             return range;
         }
     }

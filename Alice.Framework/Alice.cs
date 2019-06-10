@@ -28,17 +28,10 @@ namespace Alice.Framework
 
             return response;
         }
-
-
-        //private string ShowListResponse(Regex regex, string userMessage)
-        //{
-        //    Match match = regex.Match(userMessage);
-        //    StringBuilder sb = new StringBuilder();
-        //    foreach (var item in match.Groups)
-        //    {
-        //        sb.Append(item.ToString() + "<br/>");
-        //    }
-        //    return sb.ToString();
-        //}
     }
+    //TODO Implement Authentication provider
+    //TODO Implement Cancel booking
+    //TODO Implement add bookie name
+    //TODO Implement add booking reason
+
 }

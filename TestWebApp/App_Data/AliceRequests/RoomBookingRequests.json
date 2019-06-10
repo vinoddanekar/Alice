@@ -1,7 +1,7 @@
 [
   {
     "UserMessage": "book room|room book|book",
-    "ActionSuccessResponse": "Which room?",
+    "ActionSuccessResponse": "To book room say \"Book {RoomName} from {time} to {time} for {subject}\"",
     "ActionFailureResponse": "Which room?",
     "ValidationFailureResponse": "",
     "Validation": "",
@@ -9,8 +9,30 @@
     "ServerAction": "",
     "UserRespondedTo": ""
   },
+
+  /*
+  v1: \b(book)\s(\w[\s\w]*)\s(from)\s([A-Za-z0-9:]*)[\s](to|-)[\s]([A-Za-z0-9:]*)\s(for)\s(\w[\s\w]*)\b
+  book someroom from 1 - 2 for meeting
+  */
   {
-    "UserMessage": "\\b(book)\\s(\\w[\\s\\w]*)\\s(from)\\s(\\w*)[\\s](to|-)[\\s](\\w*)\\b",
+    "UserMessage": "\\b(book)\\s(\\w[\\s\\w]*)\\s(from)\\s([A-Za-z0-9:]*)[\\s](to|-)[\\s]([A-Za-z0-9:]*)\\s(for)\\s(\\w[\\s\\w]*)\\b",
+    "ActionSuccessResponse": "Booked",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": "BookRoom",
+    "UserRespondedTo": "",
+    "RequestFormat": "regex"
+  },
+
+  /*
+  v1: \\b(book)\\s(\\w[\\s\\w]*)\\s(from)\\s(\\w*)[\\s](to|-)[\\s](\\w*)\\b
+  v2: \b(book)\s(\w[\s\w]*)\s(from)\s([A-Za-z0-9:]*)[\s](to|-)[\s]([A-Za-z0-9:]*)\b
+
+  */
+  {
+    "UserMessage": "\\b(book)\\s(\\w[\\s\\w]*)\\s(from)\\s([A-Za-z0-9:]*)[\\s](to|-)[\\s]([A-Za-z0-9:]*)\\b",
     "ActionSuccessResponse": "Booked",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",

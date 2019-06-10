@@ -74,3 +74,9 @@ clear:both;
     margin: 1em 1em 1em 1em;
     padding: 0em 0em 0em 1em;
 }
+
+.aliceResponse .aliceRequestMarker {
+    font-weight:normal;
+    text-decoration: underline;
+    color:#000;
+}

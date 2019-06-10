@@ -14,8 +14,7 @@ namespace RoomBookingLib
         {
             get
             {
-                string virtualPath = "~/app_data/room-bookings.json";
-                return HttpContext.Current.Server.MapPath(virtualPath);
+                return Config.Current.BookingDataFile;
             }
         }
 
@@ -46,12 +45,8 @@ namespace RoomBookingLib
         public Booking Book(BookingRequest bookingRequest)
         {
             IList<Booking> bookings = List();
-
-            Booking presentBooking = GetBooking(bookings, bookingRequest.BookFrom, bookingRequest.BookTo, bookingRequest.RoomName);
-            if (presentBooking != null)
-            {
-                throw new Exception(string.Format("Room {0} is booked by {1} till {2}, already.", presentBooking.RoomName, presentBooking.BookedBy, presentBooking.BookedTo.ToString("hh:mm tt")));
-            }
+            bookingRequest.BookTo = bookingRequest.BookTo.AddMilliseconds(-1);
+            ValidateBooking(bookings, bookingRequest);
 
             Booking booking = bookingRequest.ToBooking();
             bookings.Add(booking);
@@ -61,13 +56,27 @@ namespace RoomBookingLib
             return booking;
         }
 
+        private void ValidateBooking(IList<Booking> bookings, BookingRequest bookingRequest)
+        {
+            RoomRepository roomRepository = new RoomRepository();
+            Room room = roomRepository.Find(bookingRequest.RoomName);
+            if (room == null)
+                throw new Exception("Oh! I can't book it. There is no such room. Type <a {aliceRequest}>Show rooms</a> to show rooms.");
+
+            Booking presentBooking = GetBooking(bookings, bookingRequest.BookFrom, bookingRequest.BookTo, bookingRequest.RoomName);
+            if (presentBooking != null)
+            {
+                throw new Exception(string.Format("Oh boy! Its not availablle. <a {{aliceRequest}}>Show bookings</a>", presentBooking.RoomName));
+            }
+        }
+
         public Booking GetBooking(IList<Booking> bookings, DateTime dateFrom, DateTime dateTo, string roomName)
         {
             IList<Booking> bookingsForSlot = ListEngaged(bookings, dateFrom, dateTo);
 
-            foreach (Booking booking in bookings)
+            foreach (Booking booking in bookingsForSlot)
             {
-                if (booking.RoomName == roomName)
+                if (booking.RoomName.Equals(roomName, StringComparison.InvariantCultureIgnoreCase))
                 {
                     return booking;
                 }
@@ -102,11 +111,12 @@ namespace RoomBookingLib
         private IList<Booking> ListEngaged(IList<Booking> bookings, DateTime dateFrom, DateTime dateTo)
         {
             IList<Booking> bookingsForSlot = new List<Booking>();
+
             foreach (Booking booking in bookings)
             {
                 if (
-                    (booking.BookedFrom < dateFrom && booking.BookedTo > dateFrom) ||
-                    (booking.BookedFrom < dateTo && booking.BookedTo > dateTo)
+                    (booking.BookedFrom <= dateFrom && booking.BookedTo >= dateFrom) ||
+                    (booking.BookedFrom <= dateTo && booking.BookedTo >= dateTo)
                     )
                 {
                     if (!bookingsForSlot.Contains(booking))
@@ -115,6 +125,12 @@ namespace RoomBookingLib
             }
 
             return bookingsForSlot;
+        }
+
+        private void AddCorrection(ref DateTime dateFrom, ref DateTime dateTo)
+        {
+            dateFrom = dateFrom.AddMilliseconds(-1);
+            dateTo = dateTo.AddMilliseconds(1);
         }
     }
 }

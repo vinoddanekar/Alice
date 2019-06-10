@@ -18,6 +18,16 @@
     "ServerAction": ""
   },
   {
+    "UserMessage": "tell me|tell me something",
+    "ActionSuccessResponse": "Tell you what?",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+
+  {
     "UserMessage": "i'm fine|im good|im ok",
     "ActionSuccessResponse": "Great! What can I help you with?",
     "ActionFailureResponse": "",
@@ -116,5 +126,25 @@
     "Validation": "",
     "ClientAction": "",
     "ServerAction": ""
+  },
+  {
+    "UserMessage": "who are you?",
+    "ActionSuccessResponse": "Who in the world am I? Ah, that's the great puzzle.|We're all mad here.|I'm afraid I can't explain myself, sir. Because I am not myself, you see?|I wonder if I've been changed in the night. Let me think. Was I the same when I got up this morning? I almost think I can remember feeling a little different. But if I'm not the same, the next question is 'Who in the world am I?' Ah, that's the great puzzle!|Alice",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
+  },
+  //TODO Implement *
+  {
+    "UserMessage": "i think*",
+    "ActionSuccessResponse": "Nobody asked your opinion, Hatter!",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": ""
   }
+
 ]

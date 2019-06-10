@@ -15,7 +15,7 @@ namespace RoomBookingLib
             get
             {
                 IAliceResponse response = new AliceResponse();
-                response.Message = "I could not serve this request.";
+                response.Message = "Booking service could not serve this request.";
 
                 return response;
             }
@@ -34,6 +34,11 @@ namespace RoomBookingLib
                 case "listbookings":
                     response = ListBookings(request);
                     break;
+                case "bookroom":
+                    BookingAliceParser parser = new BookingAliceParser();
+                    response = parser.Book(request);
+                    break;
+                case "cancelbooking":
 
                 default:
                     response = DefaultResponse;
@@ -85,7 +90,11 @@ namespace RoomBookingLib
             foreach (Booking booking in bookings)
             {
                 sb.Append("<li>");
-                sb.AppendFormat("{0} is booked for {1}<br/>", booking.RoomName, booking.BookRangeToString());
+                sb.AppendFormat("{0} is booked from {1}", booking.RoomName, booking.BookRangeToString());
+                if(!string.IsNullOrWhiteSpace(booking.BookedFor))
+                {
+                    sb.AppendFormat(" for {0}", booking.BookedFor);
+                }
                 sb.Append("</li>");
             }
             sb.Append("<ul>");

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Alice.Framework
 {
@@ -35,42 +36,15 @@ namespace Alice.Framework
                 response = _handler.Execute(request);
             }
 
-            //TODO Move to room bookings
-            //else if (entry.ServerAction == "BookingParser.List(today)")
-            //{
-            //    BookingAliceParser parser = new BookingAliceParser();
-            //    string responseMessage = parser.ListBookings(DateTime.Now);
-            //    response.Message = responseMessage;
-            //}
-            //if(entry.RequestFormat == "regex")
-            //{
-            //    BookingAliceParser parser = new BookingAliceParser();
-
-            //    AliceRequest command = new AliceRequest();
-
-            //    Regex regex = new Regex(entry.UserMessage);
-            //    Match match = regex.Match(userMessage);
-            //    for (int i =0; i<match.Groups.Count;i++)
-            //    {
-            //        AliceRequestParameter param = new AliceRequestParameter();
-            //        param.Name = i.ToString();
-            //        param.Value = match.Groups[i].Value;
-            //        command.Parameters.Add(param);
-            //    }
-            //    response.Message = parser.Book(command);
-            //}
-
             return response;
-
         }
 
         private IAliceRequest CreateRequest()
         {
-            IAliceRequest request = new AliceRequest();
-            request.ServerAction = _command.ServerAction;
-            request.RequestMessage = _userMessage;
+            RequestBuilder requestBuilder = new RequestBuilder(_command, _userMessage);
+            IAliceRequest request = requestBuilder.Build();
+
             return request;
         }
-
     }
 }

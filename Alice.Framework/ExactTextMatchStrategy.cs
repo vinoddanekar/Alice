@@ -13,7 +13,7 @@ namespace Alice.Framework
 
             for (int chunkIndex = 0; chunkIndex < patternChunk.Length; chunkIndex++)
             {
-                if (text == patternChunk[chunkIndex])
+                if (text.Equals(patternChunk[chunkIndex], StringComparison.InvariantCultureIgnoreCase))
                 {
                     return true;
                 }

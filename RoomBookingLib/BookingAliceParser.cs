@@ -54,27 +54,30 @@ namespace RoomBookingLib
          *5 -
          *6 2
          */
-        public string Book(AliceRequest command)
+        public IAliceResponse Book(IAliceRequest aliceRequest)
         {
-           // BotExperience experience = new BotExperience();
-            BookingRequest request = new BookingRequest();
-            request.RoomName = command.Parameters[2].Value;
-           // request.BookFrom = experience.FormatTime(command.Parameters[4].Value);
-            //request.BookTo = experience.FormatTime(command.Parameters[6].Value);
-            request.BookFrom = Convert.ToDateTime(DateTime.Now.ToString("dd-MMM-yy ") + request.BookFrom.ToString("HH:mm tt"));
-            request.BookTo = Convert.ToDateTime(DateTime.Now.ToString("dd-MMM-yy ") + request.BookTo.ToString("HH:mm tt"));
+            BookingRequest bookingRequest = new BookingRequest();
+            bookingRequest.RoomName = aliceRequest.Parameters[2].Value;
+            bookingRequest.BookFrom = Utility.ConvertToTime(aliceRequest.Parameters[4].Value);
+            bookingRequest.BookTo = Utility.ConvertToTime(aliceRequest.Parameters[6].Value);
+            bookingRequest.BookFrom = Convert.ToDateTime(DateTime.Now.ToString("dd-MMM-yy ") + bookingRequest.BookFrom.ToString("HH:mm tt"));
+            bookingRequest.BookTo = Convert.ToDateTime(DateTime.Now.ToString("dd-MMM-yy ") + bookingRequest.BookTo.ToString("HH:mm tt"));
+
+            if (aliceRequest.Parameters.Count > 7) {
+                bookingRequest.BookedFor = aliceRequest.Parameters[8].Value;
+            }
 
             Booking booking;
-            string response;
+            IAliceResponse response = new AliceResponse();
             try
             {
-                booking = _repository.Book(request);
-                response = "Booked";
+                booking = _repository.Book(bookingRequest);
+                response.Message = "Booked";
             }
             catch (Exception ex)
             {
-
-                response = "Error: " + ex.Message;
+                response.StatusCode = System.Net.HttpStatusCode.BadRequest;
+                response.Message = "Error: " + ex.Message;
             }
             
             return response;

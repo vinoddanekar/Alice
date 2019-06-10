@@ -10,6 +10,7 @@
 
     <script type="text/javascript">
         var responseBox;
+        var chatBox;
         var recentMessages = [];
         var currentRecentMessageIndex = 0;
         function addToRecent(message) {
@@ -40,12 +41,12 @@
         $(document).ready(function () {
             adjustLayout();
             responseBox = $('#responseBox');
+            chatBox = $('#chatBox');
 
             $('#chatBox').keydown(function (event) {
                 var keycode = (event.keyCode ? event.keyCode : event.which);
                 if (keycode == '13') {
                     var message = $(this).val();
-                    addToRecent(message);
                     processMessage(message);
                     $(this).val("");
                 }
@@ -74,6 +75,8 @@
         }
 
         function processMessage(message) {
+            addToRecent(message);
+
             var trimmedMessage = message.trim();
             if (trimmedMessage != "") {
                 showUserMessage(message);
@@ -136,18 +139,44 @@
         function processReply(response) {
             var message = response.d.Message;
             var actionToPerform = response.d.ActionToPerform;
+            if (response.d.StatusCode != 200) {
+                processErrorReply(response.d);
+                return;
+            }
 
             if (actionToPerform != "") {
                 performAction(actionToPerform);
             }
 
+            message = parseAliceRequestIfAny(message);
             showAliceMessage(message);
             scrollResponseToBottom();
         }
 
+        function parseAliceRequestIfAny(responseText) {
+            var result = responseText.replace("{aliceRequest}", "class=\"aliceRequestMarker\" href=\"#\" onclick=\"javascript:autoPlaceRequest(this);\"");
+            return result;
+        }
+
+        function autoPlaceRequest(sender) {
+            var senderObject = $(sender);
+            var requestText = senderObject.text();
+            processMessage(requestText);
+            return true;
+        }
+
         function processErrorReply(response) {
-            var errorMessage = 'Oops! I got an error: ' + response.responseJSON.Message;
-                        
+            var errorMessage;
+            
+            if (response.StatusCode == 400) {
+                errorMessage = response.Message;
+            } else if (response.status == 0) {
+                errorMessage = "Oh boy! Seems you are not connected to server or server is down.";
+            } else if (response.status == 500) {
+                errorMessage = response.responseJSON.Message;
+            }
+
+            errorMessage = parseAliceRequestIfAny(errorMessage);
             showAliceErrorMessage(errorMessage);
             scrollResponseToBottom();
         }
@@ -157,7 +186,6 @@
                 responseBox.html("");
             }
         }
-
 
     </script>
 </head>

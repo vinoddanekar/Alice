@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alice.Framework", "Alice.Fr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBookingLib", "RoomBookingLib\RoomBookingLib.csproj", "{080654F0-DB3D-488C-8782-461B1AC861E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alice.Tests", "Alice.Tests\Alice.Tests.csproj", "{857B9560-3C2E-4DD9-9C09-7D50BDD50AFC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{080654F0-DB3D-488C-8782-461B1AC861E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{080654F0-DB3D-488C-8782-461B1AC861E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{080654F0-DB3D-488C-8782-461B1AC861E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{857B9560-3C2E-4DD9-9C09-7D50BDD50AFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{857B9560-3C2E-4DD9-9C09-7D50BDD50AFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{857B9560-3C2E-4DD9-9C09-7D50BDD50AFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{857B9560-3C2E-4DD9-9C09-7D50BDD50AFC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
