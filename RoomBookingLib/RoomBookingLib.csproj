@@ -50,6 +50,7 @@
     <Compile Include="BookingRepository.cs" />
     <Compile Include="BookingRequest.cs" />
     <Compile Include="BookingRequestProvider.cs" />
+    <Compile Include="BookingRequestsBuilder.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="JsonFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

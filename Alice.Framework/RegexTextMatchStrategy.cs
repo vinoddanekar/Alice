@@ -10,7 +10,7 @@ namespace Alice.Framework
     {
         public bool Match(string text, string pattern)
         {
-            Regex exp = new Regex(pattern);
+            Regex exp = new Regex(pattern, RegexOptions.IgnoreCase);
             bool matchResult = exp.IsMatch(text);
 
             return matchResult;

@@ -44,29 +44,13 @@ namespace RoomBookingLib
 
             return sb.ToString();
         }
-
-        /*
-         *0 book am from 1 - 2
-         *1 book
-         *2 am
-         *3 from
-         *4 1
-         *5 -
-         *6 2
-         */
+        
         public IAliceResponse Book(IAliceRequest aliceRequest)
         {
-            BookingRequest bookingRequest = new BookingRequest();
-            bookingRequest.RoomName = aliceRequest.Parameters[2].Value;
-            bookingRequest.BookFrom = Utility.ConvertToTime(aliceRequest.Parameters[4].Value);
-            bookingRequest.BookTo = Utility.ConvertToTime(aliceRequest.Parameters[6].Value);
-            bookingRequest.BookFrom = Convert.ToDateTime(DateTime.Now.ToString("dd-MMM-yy ") + bookingRequest.BookFrom.ToString("HH:mm tt"));
-            bookingRequest.BookTo = Convert.ToDateTime(DateTime.Now.ToString("dd-MMM-yy ") + bookingRequest.BookTo.ToString("HH:mm tt"));
-
-            if (aliceRequest.Parameters.Count > 7) {
-                bookingRequest.BookedFor = aliceRequest.Parameters[8].Value;
-            }
-
+            BookingRequestsBuilder requestsBuilder = new BookingRequestsBuilder(aliceRequest.Parameters);
+            BookingRequest bookingRequest;
+            bookingRequest = requestsBuilder.Build();
+            
             Booking booking;
             IAliceResponse response = new AliceResponse();
             try

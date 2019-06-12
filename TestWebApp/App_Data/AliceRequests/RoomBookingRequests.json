@@ -9,10 +9,26 @@
     "ServerAction": "",
     "UserRespondedTo": ""
   },
+  /*
+  e.g.: book someroom on 1/2 from 1 - 2 for meeting
+  \b(book)\s(\w[\s\w]*)\s(on)\s(\w*[\s-/\w]*)\s(from)\s([A-Za-z0-9:]*)[\s](to|-)[\s]([A-Za-z0-9:]*)\s(for)\s(\w[\s\w]*)\b
+  --Some test \b(book)\s(\w[\s\w]*)\s(on|today|tom|tomm|tomorrow|day after tomorrow)\s(from)
+  */
+  {
+    "UserMessage": "\\b(book)\\s(\\w[\\s\\w]*)\\s(on)\\s(\\w*[\\s-/\\w]*)\\s(from)\\s([A-Za-z0-9:]*)[\\s](to|-)[\\s]([A-Za-z0-9:]*)\\s(for)\\s(\\w[\\s\\w]*)\\b",
+    "ActionSuccessResponse": "Booked",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": "BookRoom",
+    "UserRespondedTo": "",
+    "RequestFormat": "regex"
+  },
 
   /*
-  v1: \b(book)\s(\w[\s\w]*)\s(from)\s([A-Za-z0-9:]*)[\s](to|-)[\s]([A-Za-z0-9:]*)\s(for)\s(\w[\s\w]*)\b
-  book someroom from 1 - 2 for meeting
+  v1: book someroom from 1 - 2 for meeting
+  \b(book)\s(\w[\s\w]*)\s(from)\s([A-Za-z0-9:]*)[\s](to|-)[\s]([A-Za-z0-9:]*)\s(for)\s(\w[\s\w]*)\b
   */
   {
     "UserMessage": "\\b(book)\\s(\\w[\\s\\w]*)\\s(from)\\s([A-Za-z0-9:]*)[\\s](to|-)[\\s]([A-Za-z0-9:]*)\\s(for)\\s(\\w[\\s\\w]*)\\b",
@@ -27,9 +43,8 @@
   },
 
   /*
-  v1: \\b(book)\\s(\\w[\\s\\w]*)\\s(from)\\s(\\w*)[\\s](to|-)[\\s](\\w*)\\b
-  v2: \b(book)\s(\w[\s\w]*)\s(from)\s([A-Za-z0-9:]*)[\s](to|-)[\s]([A-Za-z0-9:]*)\b
-
+  e.g. book some room from 1 - 2 
+  \b(book)\s(\w[\s\w]*)\s(from)\s([A-Za-z0-9:]*)[\s](to|-)[\s]([A-Za-z0-9:]*)\b
   */
   {
     "UserMessage": "\\b(book)\\s(\\w[\\s\\w]*)\\s(from)\\s([A-Za-z0-9:]*)[\\s](to|-)[\\s]([A-Za-z0-9:]*)\\b",
@@ -42,6 +57,22 @@
     "UserRespondedTo": "",
     "RequestFormat": "regex"
   },
+  /*
+  e.g. list bookings for 1/2
+\b(list\sbookings\sfor)\s(\w*[\s-/\w]*)\b
+
+  */
+  {
+    "UserMessage": "\\b(list\\sbookings\\sfor)\\s(\\w*[\\s-/\\w]*)\\b",
+    "ActionSuccessResponse": "ServerActionResult",
+    "ActionFailureResponse": "",
+    "ValidationFailureResponse": "",
+    "Validation": "",
+    "ClientAction": "",
+    "ServerAction": "ListBookings",
+    "RequestFormat": "regex"
+  },
+
   {
     "UserMessage": "show bookings|list bookings|show bookings for today|list bookings for today",
     "ActionSuccessResponse": "ServerActionResult",

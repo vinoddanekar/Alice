@@ -61,7 +61,7 @@ namespace RoomBookingLib
             RoomRepository roomRepository = new RoomRepository();
             Room room = roomRepository.Find(bookingRequest.RoomName);
             if (room == null)
-                throw new Exception("Oh! I can't book it. There is no such room. Type <a {aliceRequest}>Show rooms</a> to show rooms.");
+                throw new Exception(string.Format("Oh! I can't book it. There is no room with name <i>{0}</i>. Type <a {{aliceRequest}}>Show rooms</a> to show rooms.", bookingRequest.RoomName));
 
             Booking presentBooking = GetBooking(bookings, bookingRequest.BookFrom, bookingRequest.BookTo, bookingRequest.RoomName);
             if (presentBooking != null)

@@ -10,6 +10,8 @@ namespace Alice.Common
         string RequestMessage { get; set; }
         List<AliceRequestParameter> Parameters { get; }
         string ServerAction { get; set; }
+        string UserName { get; set; }
+
     }
     
     public class AliceRequest : IAliceRequest
@@ -27,5 +29,6 @@ namespace Alice.Common
             }
         }
         public string ServerAction { get; set; }
+        public string UserName { get; set; }
     }
 }

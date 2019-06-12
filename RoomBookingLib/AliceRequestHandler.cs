@@ -61,7 +61,12 @@ namespace RoomBookingLib
         private IAliceResponse ListBookings(IAliceRequest request)
         {
             IAliceResponse response = new AliceResponse();
-            response.Message = ListBookings(DateTime.Now);
+            DateTime date = DateTime.Now;
+
+            if (request.Parameters.Count == 3)
+                date = Utility.ConvertToDate(request.Parameters[2].Value);
+
+            response.Message = ListBookings(date);
             
             return response;
         }
