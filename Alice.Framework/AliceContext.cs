@@ -36,5 +36,17 @@ namespace Alice.Framework
         }
 
         public IList<IAliceRequestHandler> Handlers { get { return _registeredHandlers; } }
+
+        private UserProfile _userProfile;
+        public UserProfile UserProfile
+        {
+            get
+            {
+                if (_userProfile == null)
+                    _userProfile = new UserProfile();
+
+                return _userProfile;
+            }
+        }
     }
 }

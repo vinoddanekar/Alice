@@ -41,7 +41,7 @@ namespace Alice.Framework
 
         private IAliceRequest CreateRequest()
         {
-            RequestBuilder requestBuilder = new RequestBuilder(_command, _userMessage);
+            RequestBuilder requestBuilder = new RequestBuilder(_command, _userMessage, AliceContext.Current.UserProfile);
             IAliceRequest request = requestBuilder.Build();
 
             return request;

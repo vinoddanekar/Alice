@@ -42,6 +42,7 @@
             adjustLayout();
             responseBox = $('#responseBox');
             chatBox = $('#chatBox');
+            chatBox.focus();
 
             $('#chatBox').keydown(function (event) {
                 var keycode = (event.keyCode ? event.keyCode : event.which);
@@ -202,15 +203,14 @@
     <div style="display: none">
         <div id="userMessage">
             <div class="response">
-                <div class="userResponse">
+                <div class="userResponse swing-in-right-fwd ">
                     <span>You:</span> {Message}
                 </div>
             </div>
         </div>
         <div id="aliceMessage">
             <div class="response">
-
-                <div class="aliceResponse">
+                <div class="aliceResponse swing-in-left-fwd ">
                     <span>Alice:</span> {Message}
                 </div>
             </div>

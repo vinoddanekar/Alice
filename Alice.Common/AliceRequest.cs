@@ -10,8 +10,7 @@ namespace Alice.Common
         string RequestMessage { get; set; }
         List<AliceRequestParameter> Parameters { get; }
         string ServerAction { get; set; }
-        string UserName { get; set; }
-
+        IUserProfile UserProfile { get; }
     }
     
     public class AliceRequest : IAliceRequest
@@ -29,6 +28,17 @@ namespace Alice.Common
             }
         }
         public string ServerAction { get; set; }
-        public string UserName { get; set; }
+
+        private IUserProfile _userProfile;
+        public IUserProfile UserProfile
+        {
+            get
+            {
+                if (_userProfile == null)
+                    _userProfile = new UserProfile();
+
+                return _userProfile;
+            }
+        }
     }
 }

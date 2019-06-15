@@ -44,10 +44,10 @@
 
   /*
   e.g. book some room from 1 - 2 
-  \b(book)\s(\w[\s\w]*)\s(from)\s([A-Za-z0-9:]*)[\s](to|-)[\s]([A-Za-z0-9:]*)\b
+  \b(book)\s(\w[\s\w]*)\s(from)\s([A-Za-z0-9:]*)[\s]{0,}(to|-){0,}[\s]([A-Za-z0-9:]*)\b
   */
   {
-    "UserMessage": "\\b(book)\\s(\\w[\\s\\w]*)\\s(from)\\s([A-Za-z0-9:]*)[\\s](to|-)[\\s]([A-Za-z0-9:]*)\\b",
+    "UserMessage": "\\b(book)\\s(\\w[\\s\\w]*)\\s(from)\\s([A-Za-z0-9:]*)[\\s]{0,}(to|-)[\\s]{0,}([A-Za-z0-9:]*)\\b",
     "ActionSuccessResponse": "Booked",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
@@ -58,23 +58,30 @@
     "RequestFormat": "regex"
   },
   /*
-  e.g. list bookings for 1/2
-\b(list\sbookings\sfor)\s(\w*[\s-/\w]*)\b
+  e.g. list bookings on 1/2
+\b(list\sbookings\son)\s(\w*[\s-/\w]*)\b
 
   */
   {
-    "UserMessage": "\\b(list\\sbookings\\sfor)\\s(\\w*[\\s-/\\w]*)\\b",
+    "UserMessage": "\\b(list\\sbookings\\son)\\s(\\w*[\\s-/\\w]*)\\b",
     "ActionSuccessResponse": "ServerActionResult",
-    "ActionFailureResponse": "",
-    "ValidationFailureResponse": "",
-    "Validation": "",
-    "ClientAction": "",
+    "ServerAction": "ListBookings",
+    "RequestFormat": "regex"
+  },
+  /*
+  e.g. show bookings on 1/2
+\b(show\sbookings\son)\s(\w*[\s-/\w]*)\b
+
+  */
+  {
+    "UserMessage": "\\b(show\\sbookings\\son)\\s(\\w*[\\s-/\\w]*)\\b",
+    "ActionSuccessResponse": "ServerActionResult",
     "ServerAction": "ListBookings",
     "RequestFormat": "regex"
   },
 
   {
-    "UserMessage": "show bookings|list bookings|show bookings for today|list bookings for today",
+    "UserMessage": "show bookings|list bookings|show bookings for today|list bookings for today|todays bookings",
     "ActionSuccessResponse": "ServerActionResult",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
@@ -100,15 +107,23 @@
     "ClientAction": "",
     "ServerAction": ""
   },
+  /*
+  e.g. 
+  list rooms
+  listrooms
+  list     rooms
 
+\b(?:show|list|)[ ]{0,}rooms\b
+  */
   {
-    "UserMessage": "list rooms|show rooms",
+    "UserMessage": "(?:show)[ ]{0,}rooms",
     "ActionSuccessResponse": "ServerActionResult",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
     "Validation": "",
     "ClientAction": "",
-    "ServerAction": "ListRooms"
+    "ServerAction": "ListRooms",
+    "RequestFormat": "regex"
   }
   /*
     book room any from 1-2|

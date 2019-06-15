@@ -29,9 +29,4 @@ namespace Alice.Framework
             return response;
         }
     }
-    //TODO Implement Authentication provider
-    //TODO Implement Cancel booking
-    //TODO Implement add bookie name
-    //TODO Implement add booking reason
-
 }

@@ -95,16 +95,27 @@ namespace RoomBookingLib
             foreach (Booking booking in bookings)
             {
                 sb.Append("<li>");
-                sb.AppendFormat("{0} is booked from {1}", booking.RoomName, booking.BookRangeToString());
-                if(!string.IsNullOrWhiteSpace(booking.BookedFor))
-                {
-                    sb.AppendFormat(" for {0}", booking.BookedFor);
-                }
+                AppendBookingItem(booking, sb);
                 sb.Append("</li>");
             }
             sb.Append("<ul>");
 
             return sb.ToString();
+        }
+
+        private void AppendBookingItem(Booking booking, StringBuilder sb)
+        {
+            sb.AppendFormat("{0} is booked from {1}", booking.RoomName, booking.BookRangeToString());
+            if (string.IsNullOrWhiteSpace(booking.BookedFor))
+                sb.Append(" for something");
+            else
+                sb.AppendFormat(" for {0}", booking.BookedFor);
+
+            if (string.IsNullOrWhiteSpace(booking.BookedBy))
+                sb.Append(" by someone");
+            else
+                sb.AppendFormat(" by {0}", booking.BookedBy);
+
         }
 
         private string ParseRooms(IList<Room> rooms)

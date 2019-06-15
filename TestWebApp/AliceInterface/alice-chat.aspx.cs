@@ -17,6 +17,7 @@ namespace TestWebApp.AliceInterface
         {
             RoomBookingLib.AliceRequestHandler handler = new RoomBookingLib.AliceRequestHandler();
             Alice.Framework.AliceContext.Current.Register(handler);
+            Alice.Framework.AliceContext.Current.UserProfile.UserName = "Vinod";
 
             Alice.Framework.Alice bot = new Alice.Framework.Alice();
             IAliceResponse response = bot.Ask(message);

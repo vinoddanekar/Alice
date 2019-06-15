@@ -43,9 +43,12 @@
     <Compile Include="IAliceRequestHandler.cs" />
     <Compile Include="AliceRequest.cs" />
     <Compile Include="AliceRequestParameter.cs" />
+    <Compile Include="IUserProfile.cs" />
     <Compile Include="Response.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SoundAlike.cs" />
+    <Compile Include="UserProfile.cs" />
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
