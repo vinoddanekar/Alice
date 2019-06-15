@@ -10,21 +10,22 @@ namespace RoomBookingLib
 {
     public class BookingRepository
     {
-        private string DataFile
+        private string _dataFile;
+        private string _roomsDataFile;
+
+        public BookingRepository(string dataFile, string roomsDataFile)
         {
-            get
-            {
-                return Config.Current.BookingDataFile;
-            }
+            _dataFile = dataFile;
+            _roomsDataFile = roomsDataFile;
         }
 
         public IList<Booking> List()
         {
             IList<Booking> bookings;
-            if (!File.Exists(DataFile))
+            if (!File.Exists(_dataFile))
                 return new List<Booking>();
 
-            using (StreamReader r = new StreamReader(DataFile))
+            using (StreamReader r = new StreamReader(_dataFile))
             {
                 string json = r.ReadToEnd();
                 if (string.IsNullOrWhiteSpace(json))
@@ -39,7 +40,7 @@ namespace RoomBookingLib
         private void Save(IList<Booking> bookings)
         {
             string json = JsonConvert.SerializeObject(bookings.ToArray());
-            File.WriteAllText(DataFile, json);
+            File.WriteAllText(_dataFile, json);
         }
 
         public Booking Book(BookingRequest bookingRequest)
@@ -58,7 +59,7 @@ namespace RoomBookingLib
 
         private void ValidateBooking(IList<Booking> bookings, BookingRequest bookingRequest)
         {
-            RoomRepository roomRepository = new RoomRepository();
+            RoomRepository roomRepository = new RoomRepository(_roomsDataFile);
             Room room = roomRepository.Find(bookingRequest.RoomName);
             if (room == null)
                 throw new Exception(string.Format("Oh! I can't book it. There is no room with name <i>{0}</i>. Type <a {{aliceRequest}}>Show rooms</a> to show rooms.", bookingRequest.RoomName));
@@ -70,7 +71,7 @@ namespace RoomBookingLib
             }
         }
 
-        public Booking GetBooking(IList<Booking> bookings, DateTime dateFrom, DateTime dateTo, string roomName)
+        private Booking GetBooking(IList<Booking> bookings, DateTime dateFrom, DateTime dateTo, string roomName)
         {
             IList<Booking> bookingsForSlot = ListEngaged(bookings, dateFrom, dateTo);
 
@@ -85,20 +86,20 @@ namespace RoomBookingLib
             return null;
         }
 
-        public IList<Booking> ListBookings(DateTime dateFrom, DateTime dateTo)
+        public IList<Booking> ListBookings(BookingFilter filter)
         {
             IList<Booking> bookings = List();
-            IList<Booking> selectedBookings = ListBookings(bookings, dateFrom, dateTo);
+            IList<Booking> selectedBookings = ListBookings(bookings, filter);
 
             return selectedBookings;
         }
 
-        private IList<Booking> ListBookings(IList<Booking> bookings, DateTime dateFrom, DateTime dateTo)
+        private IList<Booking> ListBookings(IList<Booking> bookings, BookingFilter filter)
         {
             IList<Booking> bookingsForSlot = new List<Booking>();
             foreach (Booking booking in bookings)
             {
-                if (booking.BookedFrom > dateFrom && booking.BookedTo < dateTo)
+                if (filter.Contains(booking))
                 {
                     if (!bookingsForSlot.Contains(booking))
                         bookingsForSlot.Add(booking);

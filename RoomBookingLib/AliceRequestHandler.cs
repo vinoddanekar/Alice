@@ -8,7 +8,56 @@ namespace RoomBookingLib
 {
     public class AliceRequestHandler : Alice.Common.IAliceRequestHandler
     {
+        private RoomRepository _roomRepository;
+        private BookingRepository _bookingRepository;
+        
         public string RequestsDataFile { get { return "RoomBookingRequests.json"; } }
+
+        public RoomRepository RoomRepository
+        {
+            get
+            {
+                if (_roomRepository == null)
+                {
+                    string roomDataFile = DataFiles["rooms"];
+                    _roomRepository = new RoomRepository(roomDataFile);
+                }
+
+                return _roomRepository;
+            }
+        }
+
+        public BookingRepository BookingRepository
+        {
+            get
+            {
+                if (_bookingRepository == null)
+                {
+                    string roomDataFile = DataFiles["rooms"];
+                    string bookingDataFile = DataFiles["bookings"];
+
+                    _bookingRepository = new BookingRepository(bookingDataFile, roomDataFile);
+                }
+
+                return _bookingRepository;
+            }
+        }
+
+        private Dictionary<string,string> _dataFiles;
+        public Dictionary<string, string> DataFiles
+        {
+            get
+            {
+                return _dataFiles;
+            }
+        }
+
+        public AliceRequestHandler()
+        {
+            _dataFiles = new Dictionary<string, string>();
+            _dataFiles.Add("rooms", Config.Current.RoomDataFile);
+            _dataFiles.Add("bookings", Config.Current.BookingDataFile);
+        }
 
         private IAliceResponse DefaultResponse
         {
@@ -35,8 +84,7 @@ namespace RoomBookingLib
                     response = ListBookings(request);
                     break;
                 case "bookroom":
-                    BookingAliceParser parser = new BookingAliceParser();
-                    response = parser.Book(request);
+                    response = Book(request);
                     break;
                 case "cancelbooking":
 
@@ -48,11 +96,32 @@ namespace RoomBookingLib
             return response;
         }
 
+        public IAliceResponse Book(IAliceRequest aliceRequest)
+        {
+            BookingRequestsBuilder requestsBuilder = new BookingRequestsBuilder(aliceRequest.Parameters, aliceRequest.UserProfile.UserName);
+            BookingRequest bookingRequest;
+            bookingRequest = requestsBuilder.Build();
+
+            Booking booking;
+            IAliceResponse response = new AliceResponse();
+            try
+            {
+                booking = BookingRepository.Book(bookingRequest);
+                response.Message = string.Format("Booked");
+            }
+            catch (Exception ex)
+            {
+                response.StatusCode = System.Net.HttpStatusCode.BadRequest;
+                response.Message = "Error: " + ex.Message;
+            }
+
+            return response;
+        }
+
         private IAliceResponse ListRooms()
         {
             IAliceResponse response = new AliceResponse();
-            RoomRepository roomRepository = new RoomRepository();
-            IList<Room> rooms = roomRepository.List();
+            IList<Room> rooms = RoomRepository.List();
             response.Message = ParseRooms(rooms);
 
             return response;
@@ -73,12 +142,14 @@ namespace RoomBookingLib
 
         public string ListBookings(DateTime date)
         {
-            BookingRepository repository = new BookingRepository();
-
             DateTime dateFrom = date.Date;
             DateTime dateTo = date.Date.AddHours(24);
 
-            IList<Booking> bookings = repository.ListBookings(dateFrom, dateTo);
+            BookingFilter filter = new BookingFilter();
+            filter.BookedFrom = dateFrom;
+            filter.BookedTo = dateTo;
+            
+            IList<Booking> bookings = BookingRepository.ListBookings(filter);
             string response = ParseBookings(bookings);
 
             return response;

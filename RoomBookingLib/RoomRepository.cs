@@ -7,10 +7,16 @@ namespace RoomBookingLib
 {
     public class RoomRepository
     {
+        private string _dataFile;
+        public RoomRepository(string dataFile)
+        {
+            _dataFile = dataFile;
+        }
+
         public IList<Room> List()
         {
             List<Room> rooms;
-            rooms = JsonFile<List<Room>>.Read(Config.Current.RoomDataFile);
+            rooms = JsonFile<List<Room>>.Read(_dataFile);
             return rooms;
         }
 

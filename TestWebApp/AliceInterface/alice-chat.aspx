@@ -5,19 +5,17 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <script src="contents/js/jquery-3.4.1.min.js"></script>
     <link href="contents/css/default.css" rel="stylesheet" />
     <link href="contents/css/animations.css" rel="stylesheet" />
-    <script src="contents/js/alice.js"></script>
 
-    <script type="text/javascript">
-    </script>
+    <script src="contents/js/jquery-3.4.1.min.js"></script>
+    <script src="contents/js/alice.js"></script>
 </head>
 <body>
 
     <div id="content">
         <div id="header">
-            <h3>Alice</h3>
+            <h3><span class="avatar">A</span> Alice</h3>
         </div>
         <div id="responseBox">
         </div>
