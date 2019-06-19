@@ -8,15 +8,15 @@ namespace RoomBookingLib
     public class BookingRequest
     {
         public string RoomName { get; set; }
-        public DateTime BookFrom { get; set; }
-        public DateTime BookTo { get; set; }
+        public DateTime BookFromUtc { get; set; }
+        public DateTime BookToUtc { get; set; }
         public string BookedBy { get; set; }
         public string BookedFor { get; set; }
-        public DateTime BookedOn { get; }
+        public DateTime BookedOnUtc { get; }
 
         public BookingRequest()
         {
-            BookedOn = DateTime.Now;
+            BookedOnUtc = DateTime.Now;
         }
 
         public Booking ToBooking()
@@ -25,9 +25,9 @@ namespace RoomBookingLib
             {
                 BookedBy = BookedBy,
                 BookedFor = BookedFor,
-                BookedFrom = BookFrom,
-                BookedOn = BookedOn,
-                BookedTo = BookTo,
+                BookedFromUtc = BookFromUtc,
+                BookedOnUtc = BookedOnUtc,
+                BookedToUtc = BookToUtc,
                 RoomName = RoomName
             };
 

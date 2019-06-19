@@ -10,7 +10,7 @@ namespace RoomBookingLib
     {
         private RoomRepository _roomRepository;
         private BookingRepository _bookingRepository;
-        
+        private IUserProfile _userProfile;
         public string RequestsDataFile { get { return "RoomBookingRequests.json"; } }
 
         public RoomRepository RoomRepository
@@ -73,6 +73,7 @@ namespace RoomBookingLib
         public IAliceResponse Execute(IAliceRequest request)
         {
             IAliceResponse response;
+            _userProfile = request.UserProfile;
 
             string serverAction = request.ServerAction.ToLower();
             switch (serverAction)
@@ -82,6 +83,9 @@ namespace RoomBookingLib
                     break;
                 case "listbookings":
                     response = ListBookings(request);
+                    break;
+                case "listmybookings":
+                    response = ListMyBookings(request);
                     break;
                 case "bookroom":
                     response = Book(request);
@@ -98,7 +102,7 @@ namespace RoomBookingLib
 
         public IAliceResponse Book(IAliceRequest aliceRequest)
         {
-            BookingRequestsBuilder requestsBuilder = new BookingRequestsBuilder(aliceRequest.Parameters, aliceRequest.UserProfile.UserName);
+            BookingRequestsBuilder requestsBuilder = new BookingRequestsBuilder(aliceRequest.Parameters, aliceRequest.UserProfile);
             BookingRequest bookingRequest;
             bookingRequest = requestsBuilder.Build();
 
@@ -135,20 +139,34 @@ namespace RoomBookingLib
             if (request.Parameters.Count == 3)
                 date = Utility.ConvertToDate(request.Parameters[2].Value);
 
-            response.Message = ListBookings(date);
+            response.Message = ListBookings(date, string.Empty);
             
             return response;
         }
 
-        public string ListBookings(DateTime date)
+        private IAliceResponse ListMyBookings(IAliceRequest request)
         {
-            DateTime dateFrom = date.Date;
-            DateTime dateTo = date.Date.AddHours(24);
+            IAliceResponse response = new AliceResponse();
+            DateTime date = DateTime.Now;
 
-            BookingFilter filter = new BookingFilter();
-            filter.BookedFrom = dateFrom;
-            filter.BookedTo = dateTo;
+            if (request.Parameters.Count == 3)
+                date = Utility.ConvertToDate(request.Parameters[2].Value);
+
+            response.Message = ListBookings(date, request.UserProfile.UserName);
+
+            return response;
+        }
+
+        public string ListBookings(DateTime date, string userName)
+        {
+            DateTime localTime = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(date, _userProfile.TimeZoneInfo.Id);
+            DateTime dateUtc = localTime.Date.ToUniversalTime();
             
+            BookingFilter filter = new BookingFilter();
+            filter.BookedFromUtc = dateUtc;
+            filter.BookedToUtc = filter.BookedFromUtc.AddHours(24);
+            filter.BookedBy = userName;
+
             IList<Booking> bookings = BookingRepository.ListBookings(filter);
             string response = ParseBookings(bookings);
 
@@ -162,38 +180,37 @@ namespace RoomBookingLib
                 return "No bookings recorded yet!";
 
             sb.Append("I found something - ");
-            sb.Append("<ul>");
+            sb.Append("<ol>");
             foreach (Booking booking in bookings)
             {
                 sb.Append("<li>");
                 AppendBookingItem(booking, sb);
                 sb.Append("</li>");
             }
-            sb.Append("<ul>");
+            sb.Append("<ol>");
 
             return sb.ToString();
         }
 
         private void AppendBookingItem(Booking booking, StringBuilder sb)
         {
-            sb.AppendFormat("{0} is booked from {1}", booking.RoomName, booking.BookRangeToString());
+            sb.AppendFormat("{0} <i>is booked from</i> {1}", booking.RoomName, booking.BookRangeLocalToString(_userProfile.TimeZoneInfo));
             if (string.IsNullOrWhiteSpace(booking.BookedFor))
-                sb.Append(" for something");
+                sb.Append(" <i>for</i> something");
             else
-                sb.AppendFormat(" for {0}", booking.BookedFor);
+                sb.AppendFormat(" <i>for</i> {0}", booking.BookedFor);
 
             if (string.IsNullOrWhiteSpace(booking.BookedBy))
-                sb.Append(" by someone");
+                sb.Append(" <i>by</i> someone");
             else
-                sb.AppendFormat(" by {0}", booking.BookedBy);
-
+                sb.AppendFormat(" <i>by</i> {0}", booking.BookedBy);
         }
 
         private string ParseRooms(IList<Room> rooms)
         {
             StringBuilder sb = new StringBuilder();
             if (rooms.Count == 0)
-                return "Surprising! There are no rooms! Take a looks at documentation.";
+                return "Surprising! There are no rooms! Take a look at documentation.";
 
             sb.Append("<ol>");
             foreach (Room room in rooms)

@@ -80,13 +80,20 @@
     color: #757575;
 }
 
-.aliceResponse {
-    background-color: #e91e63;
-    /* border: 1px dotted #E91E63; */
-    color: #FAFAFA;
-}
+    .userResponse:hover {
+        background-color: #eee;
+        color: #333;
+    }
 
-    .aliceResponse span, .userResponse span {
+    .aliceResponse {
+        background-color: #e91e63cc;
+        /* border: 1px dotted #E91E63; */
+        color: #FAFAFA;
+    }
+.aliceResponse:hover {
+    background-color: #E91E63;
+}
+.aliceResponse span, .userResponse span {
         font-weight: bold;
         display:none;
     }
@@ -101,11 +108,13 @@
 }
 
 .aliceResponse .aliceRequestMarker {
-    font-weight:normal;
+    font-weight: normal;
     text-decoration: underline;
-    color:#000;
+    color: #fafafaeb;
 }
-
+.aliceResponse .aliceRequestMarker:hover {
+ color:#fff;
+}
 /************************************************************************
        
 ************************************************************************/

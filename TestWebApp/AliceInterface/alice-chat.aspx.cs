@@ -16,8 +16,9 @@ namespace TestWebApp.AliceInterface
         public static IAliceResponse Ask(string message)
         {
             RoomBookingLib.AliceRequestHandler handler = new RoomBookingLib.AliceRequestHandler();
-            Alice.Framework.AliceContext.Current.Register(handler);
-            Alice.Framework.AliceContext.Current.UserProfile.UserName = "Vinod";
+            AliceContext.Current.Register(handler);
+            AliceContext.Current.UserProfile.UserName = "Vinod";
+            AliceContext.Current.UserProfile.TimeZoneInfo = TimeZoneInfo.FindSystemTimeZoneById("India Standard Time");
 
             Alice.Framework.Alice bot = new Alice.Framework.Alice();
             IAliceResponse response = bot.Ask(message);

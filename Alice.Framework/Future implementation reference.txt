@@ -1,0 +1,72 @@
+﻿//TODO Implement Authentication provider
+//TODO Implement Cancel booking
+
+//TODO Translations + flexible api keys per user
+//TODO maps + directions + tell traffic
+//TODO tell weather
+//TODO generate user keys
+//TODO today in history
+//TODO record unknown quests
+
+//Done Implement add bookie name
+//Done Implement add booking reason
+//Done Search by bookie name
+
+
+
+Jokes
+https://sv443.net/jokeapi
+https://geek-jokes.sameerkumar.website/api
+
+
+/help
+
+List bookings
+- Lists all bookings for day
+List bookings on tomorrow
+- Lists all bookings on tomorrow
+List bookings on 01-Apr
+- Lists all bookings on 01 April
+
+List rooms
+- Lists all rooms
+
+Book Training room from 12 to 13
+- Books Training room from 12pm to 01pm for you
+
+Book Training room from 12 to 13 for Meeting
+- Books Training room from 12pm to 01pm with reason Meeting for you
+
+Book Training room on tomorrow from 12 to 13 for meeting
+- Books Training room from 12pm to 01pm on tomorrow for meeting
+
+Book Training room on 01-Apr from 12 to 13 for meeting
+- Books Training room from 12pm to 01pm on 01-Apr for meeting
+
+Cancel all my bookings
+
+Cancel my bookings
+You mean all bookings?
+
+
+Unmatched text ?
+- I can not understand all the questions. Ask Mad Hatter. He is mad but smart.
+
+
+what is solid
+what is srp,....
+what is patterns,....
+refactoring
+
+
+
+:: Conversation
+book room
+which one?
+Room 1
+When from - to?
+1 - 2
+for?
+Meeting
+Ok, so you want to book room 1 from 1 - 2 for meeting?
+yes, correct, sure, yep, yeah

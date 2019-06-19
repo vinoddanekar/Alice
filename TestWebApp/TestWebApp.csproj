@@ -66,6 +66,7 @@
     <Content Include="AliceInterface\contents\css\default.css" />
     <Content Include="AliceInterface\contents\js\alice.js" />
     <Content Include="AliceInterface\contents\js\jquery-3.4.1.min.js" />
+    <Content Include="AliceInterface\default.aspx" />
     <Content Include="App_Data\RoomBookings\Bookings.json" />
     <Content Include="App_Data\AliceRequests\DefaultRequests.json" />
     <Content Include="App_Data\AliceRequests\RoomBookingRequests.json" />
@@ -89,6 +90,13 @@
     </Compile>
     <Compile Include="AliceInterface\alice-chat.aspx.designer.cs">
       <DependentUpon>alice-chat.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AliceInterface\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AliceInterface\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -8,16 +8,26 @@ namespace RoomBookingLib
     public class Booking
     {
         public string RoomName { get; set; }
-        public DateTime BookedFrom { get; set; }
-        public DateTime BookedTo { get; set; }
+        public DateTime BookedFromUtc { get; set; }
+        public DateTime BookedToUtc { get; set; }
         public string BookedBy { get; set; }
         public string BookedFor { get; set; }
-        public DateTime BookedOn { get; set; }
+        public DateTime BookedOnUtc { get; set; }
 
-        public string BookRangeToString()
+        public string BookRangeUtcToString()
         {
-            string range = BookedFrom.ToString("hh:mm tt") + " to " + BookedTo.ToString("hh:mm tt");
+            string range = BookedFromUtc.ToString("hh:mm tt") + " to " + BookedToUtc.ToString("hh:mm tt");
             return range;
         }
+
+        public string BookRangeLocalToString(TimeZoneInfo timeZoneInfo)
+        {
+            DateTime fromDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(BookedFromUtc, timeZoneInfo.Id);
+            DateTime toDate = TimeZoneInfo.ConvertTimeBySystemTimeZoneId(BookedToUtc, timeZoneInfo.Id);
+
+            string range = fromDate.ToString("hh:mm tt") + " to " + toDate.ToString("hh:mm tt");
+            return range;
+        }
+
     }
 }

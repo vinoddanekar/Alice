@@ -43,10 +43,15 @@ namespace RoomBookingLib
             File.WriteAllText(_dataFile, json);
         }
 
+        public void DeleteAll()
+        {
+            File.WriteAllText(_dataFile, string.Empty);
+        }
+
         public Booking Book(BookingRequest bookingRequest)
         {
             IList<Booking> bookings = List();
-            bookingRequest.BookTo = bookingRequest.BookTo.AddMilliseconds(-1);
+            bookingRequest.BookToUtc = bookingRequest.BookToUtc.AddMilliseconds(-1);
             ValidateBooking(bookings, bookingRequest);
 
             Booking booking = bookingRequest.ToBooking();
@@ -59,15 +64,18 @@ namespace RoomBookingLib
 
         private void ValidateBooking(IList<Booking> bookings, BookingRequest bookingRequest)
         {
+            if (bookingRequest.BookFromUtc < DateTime.UtcNow)
+                throw new Exception("Booking for past time is not allowed.");
+
             RoomRepository roomRepository = new RoomRepository(_roomsDataFile);
             Room room = roomRepository.Find(bookingRequest.RoomName);
             if (room == null)
                 throw new Exception(string.Format("Oh! I can't book it. There is no room with name <i>{0}</i>. Type <a {{aliceRequest}}>Show rooms</a> to show rooms.", bookingRequest.RoomName));
 
-            Booking presentBooking = GetBooking(bookings, bookingRequest.BookFrom, bookingRequest.BookTo, bookingRequest.RoomName);
+            Booking presentBooking = GetBooking(bookings, bookingRequest.BookFromUtc, bookingRequest.BookToUtc, bookingRequest.RoomName);
             if (presentBooking != null)
             {
-                throw new Exception(string.Format("Oh boy! Its not availablle. <a {{aliceRequest}}>Show bookings</a>", presentBooking.RoomName));
+                throw new Exception(string.Format("Oh boy! Its not availablle. <a {{aliceRequestAct}}>Show bookings</a>", presentBooking.RoomName));
             }
         }
 
@@ -99,7 +107,7 @@ namespace RoomBookingLib
             IList<Booking> bookingsForSlot = new List<Booking>();
             foreach (Booking booking in bookings)
             {
-                if (filter.Contains(booking))
+                if (filter.Filter(booking))
                 {
                     if (!bookingsForSlot.Contains(booking))
                         bookingsForSlot.Add(booking);
@@ -116,8 +124,8 @@ namespace RoomBookingLib
             foreach (Booking booking in bookings)
             {
                 if (
-                    (booking.BookedFrom <= dateFrom && booking.BookedTo >= dateFrom) ||
-                    (booking.BookedFrom <= dateTo && booking.BookedTo >= dateTo)
+                    (booking.BookedFromUtc <= dateFrom && booking.BookedToUtc >= dateFrom) ||
+                    (booking.BookedFromUtc <= dateTo && booking.BookedToUtc >= dateTo)
                     )
                 {
                     if (!bookingsForSlot.Contains(booking))

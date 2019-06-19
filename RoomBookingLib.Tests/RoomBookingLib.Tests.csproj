@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="TestData\Rooms.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="TestData\Rooms.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="nunit" Version="3.10.1" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.10.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Alice.Common\Alice.Common.csproj" />
+    <ProjectReference Include="..\Alice.Framework\Alice.Framework.csproj" />
+    <ProjectReference Include="..\RoomBookingLib\RoomBookingLib.csproj" />
+  </ItemGroup>
+
+</Project>
