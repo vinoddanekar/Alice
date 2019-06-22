@@ -51,12 +51,15 @@
     <Compile Include="CommandProcessor.cs" />
     <Compile Include="DefaultAliceRequestHandler.cs" />
     <Compile Include="EntryMatcher.cs" />
-    <Compile Include="RegexTextMatchStrategy.cs" />
-    <Compile Include="ExactTextMatchStrategy.cs" />
-    <Compile Include="ITextMatchStrategy.cs" />
+    <Compile Include="TextMatching\SoundAlikeTextMatchStrategy.cs" />
+    <Compile Include="TextMatching\RegexTextMatchStrategy.cs" />
+    <Compile Include="TextMatching\ExactTextMatchStrategy.cs" />
+    <Compile Include="TextMatching\ITextMatchStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RequestBuilder.cs" />
     <Compile Include="TextMatchStrategyFactory.cs" />
+    <Compile Include="UnhandledMessage.cs" />
+    <Compile Include="UnhandledMessageRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Alice.Common\Alice.Common.csproj">

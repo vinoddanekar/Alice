@@ -1,5 +1,9 @@
 [
   {
+    "UserMessage": "what can you do?|what you do?",
+    "ActionSuccessResponse": "I can book rooms currently"
+  },
+  {
     "UserMessage": "hi|hello|hey",
     "ActionSuccessResponse": "Aloha|Holla|Hi|Hello|Hey|Hey, what's app?|Hey, how are you doing?",
     "ActionFailureResponse": "",
@@ -43,7 +47,7 @@
     "ValidationFailureResponse": "",
     "Validation": "",
     "ClientAction": "",
-    "ServerAction": "",
+    "ServerAction": "AddToUnhandled",
     "UserRespondedTo": ""
   },
   {

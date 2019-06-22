@@ -12,7 +12,7 @@
 //Done Implement add booking reason
 //Done Search by bookie name
 
-
+// TODO book any room
 
 Jokes
 https://sv443.net/jokeapi
@@ -70,3 +70,15 @@ for?
 Meeting
 Ok, so you want to book room 1 from 1 - 2 for meeting?
 yes, correct, sure, yep, yeah
+
+Alice pattern
+book x {on 5} {from 2 to 4} {for meeting}
+show|list|display rooms
+
+Any curly block can appear in any sequence
+
+
+Conversation
+Possitve replies:
+- yes, yeah, yea, yup, correct, right, perfect, great, good, better, sure, true,  
+Negative replies

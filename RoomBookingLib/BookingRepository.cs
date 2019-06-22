@@ -67,6 +67,9 @@ namespace RoomBookingLib
             if (bookingRequest.BookFromUtc < DateTime.UtcNow)
                 throw new Exception("Booking for past time is not allowed.");
 
+            if (bookingRequest.BookToUtc.Subtract(bookingRequest.BookFromUtc).TotalMinutes < 5)
+                throw new Exception("Hey, you should book room for 5 minutes at least");
+
             RoomRepository roomRepository = new RoomRepository(_roomsDataFile);
             Room room = roomRepository.Find(bookingRequest.RoomName);
             if (room == null)

@@ -71,6 +71,7 @@
     <Content Include="App_Data\AliceRequests\DefaultRequests.json" />
     <Content Include="App_Data\AliceRequests\RoomBookingRequests.json" />
     <Content Include="App_Data\RoomBookings\Rooms.json" />
+    <Content Include="App_Data\AliceRequests\unhandledMessages.json" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

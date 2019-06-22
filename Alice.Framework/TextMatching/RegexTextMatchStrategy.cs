@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Alice.Framework
+namespace Alice.Framework.TextMatching
 {
     class RegexTextMatchStrategy : ITextMatchStrategy
     {

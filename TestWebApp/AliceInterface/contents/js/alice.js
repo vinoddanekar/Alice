@@ -3,7 +3,7 @@ var chatBox;
 var recentMessages = [];
 var currentRecentMessageIndex = 0;
 function addToRecent(message) {
-    if (recentMessages.length == 10) {
+    if (recentMessages.length === 10) {
         recentMessages.shift();
     }
     recentMessages.push(message);
@@ -35,20 +35,20 @@ $(document).ready(function () {
 
     $('#chatBox').keydown(function (event) {
         var keycode = (event.keyCode ? event.keyCode : event.which);
-        if (keycode == '13') {
+        if (keycode === 13) {
             var message = $(this).val();
             processMessage(message);
             $(this).val("");
         }
-        else if (keycode == "38") {
+        else if (keycode === 38) {
             var message = getPrevMessage();
             $(this).val(message);
         }
-        else if (keycode == "40") {
+        else if (keycode === 40) {
             var message = getNextMessage();
             $(this).val(message);
         }
-        else if (keycode == "27") {
+        else if (keycode === 27) {
             $(this).val("");
         }
     });
@@ -166,11 +166,11 @@ function autoHintRequest(sender) {
 function processErrorReply(response) {
     var errorMessage;
 
-    if (response.StatusCode == 400) {
+    if (response.StatusCode === 400) {
         errorMessage = response.Message;
-    } else if (response.status == 0) {
+    } else if (response.status === 0) {
         errorMessage = "Oh boy! Seems you are not connected to server or server is down.";
-    } else if (response.status == 500) {
+    } else if (response.status === 500) {
         errorMessage = response.responseJSON.Message;
     }
 
@@ -180,7 +180,7 @@ function processErrorReply(response) {
 }
 
 function performAction(actionToPerform) {
-    if (actionToPerform == "clear") {
+    if (actionToPerform === "clear") {
         responseBox.html("");
     }
 }

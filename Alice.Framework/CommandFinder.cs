@@ -1,4 +1,5 @@
 ﻿using Alice.Common;
+using Alice.Framework.TextMatching;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace Alice.Framework
 
             if (command == null)
             {
+                handler = AliceContext.Current.Handlers[0];
                 command = CommandFinder.GetDefault();
             }
             
@@ -69,6 +71,7 @@ namespace Alice.Framework
         {
             Command command = new Command();
             command.ActionSuccessResponse = "I could not understand it.";
+            command.ServerAction = "AddToUnhandled";
             return command;
         }
     }
