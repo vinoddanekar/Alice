@@ -19,9 +19,9 @@ namespace RoomBookingLib
             _roomsDataFile = roomsDataFile;
         }
 
-        public IList<Booking> List()
+        public List<Booking> List()
         {
-            IList<Booking> bookings;
+            List<Booking> bookings;
             if (!File.Exists(_dataFile))
                 return new List<Booking>();
 
@@ -41,6 +41,23 @@ namespace RoomBookingLib
         {
             string json = JsonConvert.SerializeObject(bookings.ToArray());
             File.WriteAllText(_dataFile, json);
+        }
+
+        public Booking Cancel(BookingRequest request)
+        {
+            List<Booking> bookings = List();
+            Booking booking = bookings.Find(
+                               o => o.RoomName.Equals(request.RoomName, StringComparison.InvariantCultureIgnoreCase)
+                               && o.BookedFromUtc == request.BookFromUtc 
+                               && o.BookedBy.Equals(request.BookedBy, StringComparison.InvariantCultureIgnoreCase)
+                               );
+            if (booking == null)
+                throw new Exception("Ooops! There is no such booking.");
+
+            bookings.Remove(booking);
+            Save(bookings);
+
+            return booking;
         }
 
         public void DeleteAll()

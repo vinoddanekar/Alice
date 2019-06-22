@@ -90,6 +90,26 @@ namespace Tests
         }
 
         [Test]
+        public void ShouldNotBookLessThanFiveMinuteDurationTest()
+        {
+            // Arrange
+            DateTime bookDate = _dateToTest.AddHours(16).AddMinutes(30);
+            BookingRequest request = new BookingRequest
+            {
+                RoomName = "Room 1",
+                BookedBy = "Vinod",
+                BookFromUtc = GetTimeInUtc(bookDate),
+                BookToUtc = GetTimeInUtc(bookDate.AddMinutes(3))
+            };
+
+            // Act
+            Exception exception = Assert.Throws<Exception>(() => _repository.Book(request));
+
+            // Assert
+            Assert.That(exception.Message, Is.EqualTo("Hey, you should book room for 5 minutes at least"));
+        }
+
+        [Test]
         public void ShouldListTest()
         {
             // Arrange

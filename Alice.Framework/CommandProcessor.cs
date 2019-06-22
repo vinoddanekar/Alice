@@ -33,7 +33,7 @@ namespace Alice.Framework
             else
             {
                 IAliceRequest request = CreateRequest();
-                response = _handler.Execute(request);
+                response = _handler.Handle(request);
             }
 
             return response;

@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Alice.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Alice.Common
+namespace RoomBookingLib
 {
-    public interface IAliceRequestHandler
+    interface IInternalRequestHandler
     {
-        string RequestsDataFile { get; }
         IAliceResponse Handle(IAliceRequest request);
     }
 }

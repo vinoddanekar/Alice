@@ -2,18 +2,15 @@
 using Alice.Framework.TextMatching;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Alice.Framework
 {
     class CommandFinder
-    {        
-        public Command FindOrDefault(string userMessage, out IAliceRequestHandler handler)
+    {
+        public Tuple<Command, IAliceRequestHandler> FindOrDefault(string userMessage)
         {
             Command command = null;
-            handler = null;
-
+            IAliceRequestHandler handler = null;
             for (int index = 0; index < AliceContext.Current.Handlers.Count; index++)
             {
                 IAliceRequestHandler currentHandler = AliceContext.Current.Handlers[index];
@@ -30,8 +27,10 @@ namespace Alice.Framework
                 handler = AliceContext.Current.Handlers[0];
                 command = CommandFinder.GetDefault();
             }
-            
-            return command;
+
+            Tuple<Command, IAliceRequestHandler> result = new Tuple<Command, IAliceRequestHandler>(command, handler);
+
+            return result;
         }
 
         private Command Find(string userMessage, IAliceRequestHandler handler)
@@ -44,7 +43,7 @@ namespace Alice.Framework
             return command;
         }
         
-        public Command Find(string userMessage, IList<Command> commands)
+        private Command Find(string userMessage, IList<Command> commands)
         {
             Command currentCommand = null;
             Command foundCommand = null;

@@ -10,7 +10,7 @@ namespace Alice.Framework
     {
         public string RequestsDataFile { get { return "DefaultRequests.json"; } }
         private IAliceRequest _aliceRequest;
-        public IAliceResponse Execute(IAliceRequest request)
+        public IAliceResponse Handle(IAliceRequest request)
         {
             _aliceRequest = request;
             IAliceResponse response;

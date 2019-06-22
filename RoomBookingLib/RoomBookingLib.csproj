@@ -47,14 +47,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AliceBookingCancellationSuggestionsParser.cs" />
+    <Compile Include="AliceBookingListParser.cs" />
+    <Compile Include="AliceBookingListRequestHandler.cs" />
+    <Compile Include="AliceBookRoomRequestHandler.cs" />
+    <Compile Include="AliceCancelBookingRequestHandler.cs" />
+    <Compile Include="AliceCancelBookingSuggestionRequestHandler.cs" />
+    <Compile Include="AliceListRoomsRequestHandler.cs" />
+    <Compile Include="AliceMyBookingListRequestHandler.cs" />
     <Compile Include="AliceRequestHandler.cs" />
+    <Compile Include="AliceRoomListParser.cs" />
+    <Compile Include="AliceUnrecognizedRequestHandler.cs" />
     <Compile Include="BookingFilter.cs" />
     <Compile Include="Booking.cs" />
     <Compile Include="BookingRepository.cs" />
     <Compile Include="BookingRequest.cs" />
     <Compile Include="BookingRequestProvider.cs" />
+    <Compile Include="CancellationRequestsBuilder.cs" />
     <Compile Include="BookingRequestsBuilder.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="IInternalRequestHandler.cs" />
     <Compile Include="JsonFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Room.cs" />

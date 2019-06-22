@@ -20,6 +20,7 @@
     "ServerAction": "BookRoom",
     "RequestFormat": "regex"
   },
+
   /*
   Message: book someroom on 1/2 from 1 - 2
   Pattern: \b(book)\s(\w[\s\w]*)\s(on)\s(\w*[\s-/\w]*)\s(from)\s([A-Za-z0-9:]*)[\s](to|-)[\s]([A-Za-z0-9:]*)\b
@@ -52,6 +53,29 @@
     "ServerAction": "BookRoom",
     "RequestFormat": "regex"
   },
+
+  {
+    "UserMessage": "cancel booking|cancel bookings|cancel my booking|cancel my bookings",
+    "ActionSuccessResponse": "I can't cancel booking this way. Try following - <br/><a {aliceRequestHint}><i>Cancel my booking on</i> Date <i>from</i> Time <i>of</i> RoomName</a>",
+    "ServerAction": "",
+    "RequestFormat": ""
+    /*
+      I can't cancel booking this way. Try following - <br/>
+      <a {aliceRequestHint}><i>cancel my booking on</i> Date <i>from</i> Time <i>of</i> RoomName</a>
+    */
+  },
+
+  /*
+  Message: cancel my booking on 12/1 from 12 of room 1
+  Pattern: \b(cancel\smy\sbooking)\s(on)\s(\w*[\s-/\w]*)\s(from)\s([A-Za-z0-9:]*)[\s](of)\s(\w[\s\w]*)\b
+  */
+  {
+    "UserMessage": "\\b(cancel\\smy\\sbooking)\\s(on)\\s(\\w*[\\s-/\\w]*)\\s(from)\\s([A-Za-z0-9:]*)[\\s](of)\\s(\\w[\\s\\w]*)\\b",
+    "ActionSuccessResponse": "",
+    "ServerAction": "CancelBooking",
+    "RequestFormat": "regex"
+  },
+
   /*
   Message: list bookings on 1/2
   Pattern: \b(list\sbookings\son)\s(\w*[\s-/\w]*)\b

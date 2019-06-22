@@ -80,19 +80,12 @@
     color: #757575;
 }
 
-    .userResponse:hover {
-        background-color: #eee;
-        color: #333;
-    }
-
     .aliceResponse {
         background-color: #e91e63cc;
         /* border: 1px dotted #E91E63; */
         color: #FAFAFA;
     }
-.aliceResponse:hover {
-    background-color: #E91E63;
-}
+
 .aliceResponse span, .userResponse span {
         font-weight: bold;
         display:none;

@@ -1,4 +1,4 @@
-﻿//TODO Implement Authentication provider
+﻿//TODO Implement Authentication provider - paused
 //TODO Implement Cancel booking
 
 //TODO Translations + flexible api keys per user
@@ -17,6 +17,9 @@
 Jokes
 https://sv443.net/jokeapi
 https://geek-jokes.sameerkumar.website/api
+
+Today in history
+https://history.muffinlabs.com/#ticker
 
 
 /help
@@ -42,6 +45,11 @@ Book Training room on tomorrow from 12 to 13 for meeting
 
 Book Training room on 01-Apr from 12 to 13 for meeting
 - Books Training room from 12pm to 01pm on 01-Apr for meeting
+
+Cancel booking|Cancel my booking|Cancel my bookings
+- Shows list of your bookings
+Cancel my booking on 12/1 from 12 of room 1
+
 
 Cancel all my bookings
 

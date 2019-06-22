@@ -20,9 +20,11 @@ namespace Alice.Framework
         private IAliceResponse ProcessMessage(string userMessage)
         {
             CommandFinder finder = new CommandFinder();
-            IAliceRequestHandler handler;
-            Command command = finder.FindOrDefault(userMessage, out handler);
+            Tuple<Command, IAliceRequestHandler> tuple;
+            tuple = finder.FindOrDefault(userMessage);
 
+            Command command = tuple.Item1;
+            IAliceRequestHandler handler = tuple.Item2;
             CommandProcessor processor = new CommandProcessor(handler, command, userMessage);
             IAliceResponse response = processor.Process();
 

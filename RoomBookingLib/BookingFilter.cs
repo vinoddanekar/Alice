@@ -58,17 +58,5 @@ namespace RoomBookingLib
 
             return result;
         }
-
-        private bool MatchDateTo(Booking booking)
-        {
-            bool result = false;
-            if (BookedToUtc == DateTime.MinValue || BookedFromUtc == null)
-                result = true;
-            else if (BookedToUtc < booking.BookedToUtc)
-                result = true;
-
-            return result;
-        }
-
     }
 }
