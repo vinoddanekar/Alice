@@ -7,11 +7,18 @@ namespace Alice.Framework
         public ITextMatchStrategy GetStrategy(string strategyName)
         {
             ITextMatchStrategy strategy;
-
-            if (strategyName == "regex")
-                strategy = new RegexTextMatchStrategy();
-            else
-                strategy = new ExactTextMatchStrategy();
+            switch (strategyName)
+            {
+                case "regex":
+                    strategy = new RegexTextMatchStrategy();
+                    break;
+                case "soundslike":
+                    strategy = new SoundsLikeTextMatchStrategy();
+                    break;
+                default:
+                    strategy = new ExactTextMatchStrategy();
+                    break;
+            }
 
             return strategy;
         }

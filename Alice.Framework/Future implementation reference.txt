@@ -90,3 +90,12 @@ Conversation
 Possitve replies:
 - yes, yeah, yea, yup, correct, right, perfect, great, good, better, sure, true,  
 Negative replies
+
+
+
+how is it weather today
+how will be weather today
+how will be weather by 6pm?
+
+will it rain in the evening?
+will it rain in evening?

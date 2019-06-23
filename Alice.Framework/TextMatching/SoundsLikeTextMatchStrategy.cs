@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Alice.Common;
 
 namespace Alice.Framework.TextMatching
 {
-    class SoundAlikeTextMatchStrategy : ITextMatchStrategy
+    class SoundsLikeTextMatchStrategy : ITextMatchStrategy
     {
         public bool Match(string text, string pattern)
         {
@@ -13,7 +10,7 @@ namespace Alice.Framework.TextMatching
 
             for (int chunkIndex = 0; chunkIndex < patternChunk.Length; chunkIndex++)
             {
-                if (text.Equals(patternChunk[chunkIndex], StringComparison.InvariantCultureIgnoreCase))
+                if (text.SoundsLike(pattern))
                 {
                     return true;
                 }

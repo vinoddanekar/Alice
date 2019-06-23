@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Alice.Common
+﻿namespace Alice.Common
 {
     /*
      * According to Soundex algorithm: https://en.wikipedia.org/wiki/Soundex
@@ -20,68 +15,97 @@ namespace Alice.Common
      * 4. If the saved letter's digit is the same as the resulting first digit, remove the digit (keep the letter).
      * 5. Append 3 zeros if result contains less than 3 digits. Remove all except first letter and 3 digits after it (This step same as [4.] in explanation above).
     */
-    public static class StringExtensions
+    public static class StringSoundExtensions
     {
-        public static bool SoundsLike(this string source, string targetWord)
+        public static bool SoundsLike(this string source, string target)
         {
+            string sourceSound = GetSound(source);
+            string targetSound = GetSound(target);
 
-
-            return true;
+            return sourceSound == targetSound;
         }
 
-        private static void GetSound(string text)
+        private static string GetSound(string text)
         {
             string textLowered = text.ToLower();
             char firstLetter = text[0];
             string remainingString = text.Substring(1);
 
-            string vowelsReplaced = ReplaceVowels(remainingString);
+            string spacesRemoved = remainingString.Replace(" ", string.Empty);
+            string vowelsReplaced = ReplaceVowels(spacesRemoved);
             textLowered = firstLetter + vowelsReplaced;
 
-            string consonentsRemoved = ReplaceVowels(textLowered);
-            string sameAdjecantDigitsRemoved = ReplaceSameAdjecantDigitsToOne(consonentsRemoved);
+            string consonentsRemoved = ReplaceConsonents(textLowered);
+            string sameAdjecantDigitsRemoved = ReplaceSameAdjacentDigitsToOne(consonentsRemoved);
             string zerosRemoved = sameAdjecantDigitsRemoved.Replace("0", string.Empty);
+            string nonDigitsRemoved = RemoveNonDigits(zerosRemoved);
+            string result = Limit(nonDigitsRemoved);
 
+            return result;
         }
 
-        private static string ReplaceConsonents(string text)
+        private static string Limit(string input)
         {
-            text = ReplaceWithToken(text, "bfpv", '1');
-            text = ReplaceWithToken(text, "cgjkqsxz", '2');
-            text = ReplaceWithToken(text, "dt", '3');
-            text = ReplaceWithToken(text, "l", '4');
-            text = ReplaceWithToken(text, "mn", '5');
-            text = ReplaceWithToken(text, "r", '6');
+            string result = input;
+            if(input.Length < 4)
+            {
+                result = input.PadRight(4, '0');
+            }
 
-            return text;
+            return result;
         }
-
-        private static string ReplaceVowels(string text)
+        private static string RemoveNonDigits(string input)
         {
-            text = ReplaceWithToken(text, "aeiouyhw", '0');
-            return text;
+            string result = input;
+            for (int index = input.Length - 1; index > 0 ; index--)
+            {
+                if (!char.IsDigit(result[index]) && !char.IsLetter(result[index]))
+                {
+                    result = result.Remove(index, 1);
+                }
+            }
+
+            return result;
         }
 
-        private static string ReplaceWithToken(string text, string chars, char digit)
+        public static string ReplaceConsonents(string input)
+        {
+            input = ReplaceWithToken(input, "bfpv", '1');
+            input = ReplaceWithToken(input, "cgjkqsxz", '2');
+            input = ReplaceWithToken(input, "dt", '3');
+            input = ReplaceWithToken(input, "l", '4');
+            input = ReplaceWithToken(input, "mn", '5');
+            input = ReplaceWithToken(input, "r", '6');
+
+            return input;
+        }
+
+        public static string ReplaceVowels(string input)
+        {
+            input = ReplaceWithToken(input, "aeiouyhw", '0');
+            return input;
+        }
+
+        public static string ReplaceWithToken(string input, string chars, char token)
         {
             for (int index = 0; index < chars.Length; index++)
             {
-                text = text.Replace(chars[index], digit);
+                input = input.Replace(chars[index], token);
             }
 
-            return text;
+            return input;
         }
 
-        private static string ReplaceSameAdjecantDigitsToOne(string text)
+        public static string ReplaceSameAdjacentDigitsToOne(string input)
         {
             int index = 0;
             bool canIncrease;
-            while(index > text.Length - 1)
+            while(index < input.Length - 1)
             {
                 canIncrease = true;
-                if (text[index] == text[index + 1])
+                if (input[index] == input[index + 1])
                 {
-                    text = text.Remove(index, 1);
+                    input = input.Remove(index, 1);
                     canIncrease = false;
                 }
 
@@ -89,7 +113,7 @@ namespace Alice.Common
                     index++;
             }
 
-            return text;
+            return input;
         }
     }
 }

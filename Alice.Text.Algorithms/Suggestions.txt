@@ -1,0 +1,8 @@
+﻿book myroom on 12/2 from 2:00 to 3:00 for Meeting
+
+book (myroom) {on 12/2} {from 2:00 to 3:00} {for Meeting}
+
+{} => creates a group which can be present anywhere
+() => creates a group which has to be present on same position
+| => matches OR
+
