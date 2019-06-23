@@ -13,13 +13,9 @@
     "ServerAction": ""
   },
   {
-    "UserMessage": "how are you?|how're you?|how do you do?|how r you|h r u|hru|how r u",
+    "UserMessage": "how are you|how do you do",
     "ActionSuccessResponse": "I'm fine! Thank you.|Feeling good!",
-    "ActionFailureResponse": "",
-    "ValidationFailureResponse": "",
-    "Validation": "",
-    "ClientAction": "",
-    "ServerAction": ""
+    "RequestFormat": "soundslike"
   },
   {
     "UserMessage": "tell me|tell me something",
@@ -53,11 +49,7 @@
   {
     "UserMessage": "who wrote the invisible man?",
     "ActionSuccessResponse": "H. G. Wells",
-    "ActionFailureResponse": "",
-    "ValidationFailureResponse": "",
-    "Validation": "",
-    "ClientAction": "",
-    "ServerAction": ""
+    "RequestFormat": "soundslike"
   },
   {
     "UserMessage": "there|hi there?|hi there|are you there?",
