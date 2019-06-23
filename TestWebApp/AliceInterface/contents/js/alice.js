@@ -1,31 +1,6 @@
 ﻿var responseBox;
 var chatBox;
-var recentMessages = [];
-var currentRecentMessageIndex = 0;
-function addToRecent(message) {
-    if (recentMessages.length === 10) {
-        recentMessages.shift();
-    }
-    recentMessages.push(message);
-    currentRecentMessageIndex = 9;
-}
-
-function getPrevMessage() {
-    currentRecentMessageIndex = currentRecentMessageIndex - 1;
-    if (currentRecentMessageIndex < 0 || currentRecentMessageIndex >= recentMessages.length) {
-        currentRecentMessageIndex = recentMessages.length - 1;
-    }
-
-    return recentMessages[currentRecentMessageIndex];
-}
-
-function getNextMessage() {
-    currentRecentMessageIndex = currentRecentMessageIndex + 1;
-    if (currentRecentMessageIndex >= recentMessages.length || currentRecentMessageIndex < 0) {
-        currentRecentMessageIndex = 0;
-    }
-    return recentMessages[currentRecentMessageIndex];
-}
+var recentMessageQueue = new MessageQueue();
 
 $(document).ready(function () {
     adjustLayout();
@@ -37,15 +12,15 @@ $(document).ready(function () {
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if (keycode === 13) {
             var message = $(this).val();
-            processMessage(message);
+            postRequest(message);
             $(this).val("");
         }
         else if (keycode === 38) {
-            var message = getPrevMessage();
+            var message = recentMessageQueue.Previous();
             $(this).val(message);
         }
         else if (keycode === 40) {
-            var message = getNextMessage();
+            var message = recentMessageQueue.Next();
             $(this).val(message);
         }
         else if (keycode === 27) {
@@ -64,13 +39,13 @@ function scrollResponseToBottom() {
     }, 300);
 }
 
-function processMessage(message) {
-    addToRecent(message);
+function postRequest(message) {
+    recentMessageQueue.Add(message);
 
     var trimmedMessage = message.trim();
     if (trimmedMessage != "") {
         showUserMessage(message);
-        postMessage(message);
+        requestMessageApi(message);
     }
 }
 
@@ -101,10 +76,6 @@ function adjustLayout() {
     chatBox.width(expectedWidth + 'px');
 }
 
-function postMessage(message) {
-    requestMessageApi(message);
-}
-
 function requestMessageApi(message) {
     var url = "alice-chat.aspx/Ask";
     message = message.replace("\'", "");
@@ -116,21 +87,18 @@ function requestMessageApi(message) {
         data: jsonRequest,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
-        success: processReply,
+        success: processSuccessResponse,
         failure: function (response) {
             alert(response.d);
         },
-        error: function (response) {
-            processErrorReply(response);
-        }
+        error: processErrorResponse
     });
 }
 
-function processReply(response) {
-    var message = response.d.Message;
+function processSuccessResponse(response) {
     var actionToPerform = response.d.ActionToPerform;
     if (response.d.StatusCode != 200) {
-        processErrorReply(response.d);
+        processErrorResponse(response.d);
         return;
     }
 
@@ -138,6 +106,7 @@ function processReply(response) {
         performAction(actionToPerform);
     }
 
+    var message = response.d.Message;
     message = parseAliceRequestIfAny(message);
     showAliceMessage(message);
     scrollResponseToBottom();
@@ -152,7 +121,7 @@ function parseAliceRequestIfAny(responseText) {
 function autoPlaceRequest(sender) {
     var senderObject = $(sender);
     var requestText = senderObject.text();
-    processMessage(requestText);
+    postRequest(requestText);
     return true;
 }
 
@@ -163,7 +132,7 @@ function autoHintRequest(sender) {
     return true;
 }
 
-function processErrorReply(response) {
+function processErrorResponse(response) {
     var errorMessage;
 
     if (response.StatusCode === 400) {
@@ -184,4 +153,3 @@ function performAction(actionToPerform) {
         responseBox.html("");
     }
 }
-

@@ -9,6 +9,7 @@
     <link href="contents/css/animations.css" rel="stylesheet" />
 
     <script src="contents/js/jquery-3.4.1.min.js"></script>
+    <script src="contents/js/message-queue.js"></script>
     <script src="contents/js/alice.js"></script>
 </head>
 <body>
