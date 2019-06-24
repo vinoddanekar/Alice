@@ -10,7 +10,7 @@ namespace RoomBookingLib
     public class Room
     {
         public string Name { get; set; }
-        public bool CanBookExplicitely { get; set; }
+        public bool ExplicitBooking { get; set; }
 
         public Room()
         {
@@ -25,7 +25,7 @@ namespace RoomBookingLib
         public Room(string name, bool canBookExplicitely)
         {
             Name = name;
-            CanBookExplicitely = canBookExplicitely;
+            ExplicitBooking = canBookExplicitely;
         }
     }
 }

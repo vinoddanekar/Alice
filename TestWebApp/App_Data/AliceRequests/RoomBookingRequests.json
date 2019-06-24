@@ -55,7 +55,7 @@
   },
 
   {
-    "UserMessage": "cancel booking|cancel bookings|cancel my booking|cancel my bookings",
+    "UserMessage": "cancel|cancel booking|cancel bookings|cancel my booking|cancel my bookings",
     "ActionSuccessResponse": "I can't cancel booking this way. Try following - <br/><a {aliceRequestHint}><i>Cancel my booking on</i> Date <i>from</i> Time <i>of</i> RoomName</a>",
     "ServerAction": "",
     "RequestFormat": ""
@@ -140,13 +140,8 @@ Message: show rooms
 Pattern: (?:show)[ ]{0,}rooms
   */
   {
-    "UserMessage": "(?:show)[ ]{0,}rooms",
-    "ActionSuccessResponse": "ServerActionResult",
-    "ActionFailureResponse": "",
-    "ValidationFailureResponse": "",
-    "Validation": "",
-    "ClientAction": "",
+    "UserMessage": "show rooms|list rooms|display rooms|rooms",
     "ServerAction": "ListRooms",
-    "RequestFormat": "regex"
+    "RequestFormat": "soundslike"
   }
 ]

@@ -14,6 +14,16 @@ namespace RoomBookingLib
         public string BookedFor { get; set; }
         public DateTime BookedOnUtc { get; }
 
+        public bool ExplicitBooking
+        {
+            get
+            {
+                if (RoomName.ToLower() == "any room")
+                    return false;
+
+                return true;
+            }
+        }
         public BookingRequest()
         {
             BookedOnUtc = DateTime.Now;
@@ -33,5 +43,20 @@ namespace RoomBookingLib
 
             return booking;
         }
+
+        public BookingRequest Clone()
+        {
+            BookingRequest request = new BookingRequest
+            {
+                BookedBy = BookedBy,
+                BookedFor = BookedFor,
+                BookFromUtc = BookFromUtc,
+                BookToUtc = BookToUtc,
+                RoomName = RoomName
+            };
+
+            return request;
+        }
+
     }
 }

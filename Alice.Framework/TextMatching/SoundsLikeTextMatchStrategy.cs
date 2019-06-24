@@ -10,7 +10,7 @@ namespace Alice.Framework.TextMatching
 
             for (int chunkIndex = 0; chunkIndex < patternChunk.Length; chunkIndex++)
             {
-                if (text.SoundsLike(pattern))
+                if (text.SoundsLike(patternChunk[chunkIndex]))
                 {
                     return true;
                 }

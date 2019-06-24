@@ -48,7 +48,7 @@ namespace RoomBookingLib
             List<Booking> bookings = List();
             Booking booking = bookings.Find(
                                o => o.RoomName.Equals(request.RoomName, StringComparison.InvariantCultureIgnoreCase)
-                               && o.BookedFromUtc == request.BookFromUtc 
+                               && o.BookedFromUtc == request.BookFromUtc
                                && o.BookedBy.Equals(request.BookedBy, StringComparison.InvariantCultureIgnoreCase)
                                );
             if (booking == null)
@@ -68,10 +68,9 @@ namespace RoomBookingLib
         public Booking Book(BookingRequest bookingRequest)
         {
             IList<Booking> bookings = List();
-            bookingRequest.BookToUtc = bookingRequest.BookToUtc.AddMilliseconds(-1);
-            ValidateBooking(bookings, bookingRequest);
+            BookingRequest requestToAdd = PrepareBookingRequest(bookings, bookingRequest);
 
-            Booking booking = bookingRequest.ToBooking();
+            Booking booking = requestToAdd.ToBooking();
             bookings.Add(booking);
 
             Save(bookings);
@@ -79,24 +78,57 @@ namespace RoomBookingLib
             return booking;
         }
 
-        private void ValidateBooking(IList<Booking> bookings, BookingRequest bookingRequest)
+        private BookingRequest PrepareBookingRequest(IList<Booking> bookings, BookingRequest bookingRequest)
         {
-            if (bookingRequest.BookFromUtc < DateTime.UtcNow)
-                throw new Exception("Booking for past time is not allowed.");
-
-            if (bookingRequest.BookToUtc.Subtract(bookingRequest.BookFromUtc).TotalMinutes < 5)
-                throw new Exception("Hey, you should book room for 5 minutes at least");
+            BookingRequest resultingRequest = bookingRequest.Clone();
+            resultingRequest.BookToUtc = resultingRequest.BookToUtc.AddMilliseconds(-1);
 
             RoomRepository roomRepository = new RoomRepository(_roomsDataFile);
-            Room room = roomRepository.Find(bookingRequest.RoomName);
-            if (room == null)
-                throw new Exception(string.Format("Oh! I can't book it. There is no room with name <i>{0}</i>. Type <a {{aliceRequest}}>Show rooms</a> to show rooms.", bookingRequest.RoomName));
-
-            Booking presentBooking = GetBooking(bookings, bookingRequest.BookFromUtc, bookingRequest.BookToUtc, bookingRequest.RoomName);
-            if (presentBooking != null)
+            BookingRequestValidator validator = new BookingRequestValidator(roomRepository);
+            if (!validator.Validate(resultingRequest))
             {
-                throw new Exception(string.Format("Oh boy! Its not availablle. <a {{aliceRequestAct}}>Show bookings</a>", presentBooking.RoomName));
+                throw new Exception(validator.ValidationError);
             }
+
+            if (resultingRequest.ExplicitBooking)
+            {
+                Booking presentBooking = GetBooking(bookings, bookingRequest.BookFromUtc, bookingRequest.BookToUtc, bookingRequest.RoomName);
+                if (presentBooking != null)
+                {
+                    if (presentBooking.BookedBy.Equals(resultingRequest.BookedBy, StringComparison.InvariantCultureIgnoreCase))
+                        throw new Exception("It was booked by you already.");
+                    else
+                        throw new Exception(string.Format("Oh boy! Its not availablle. <a {{aliceRequestAct}}>Show bookings</a>", presentBooking.RoomName));
+                }
+            }
+            else
+            {                
+                Room room = GetAnyAvailableRoom(bookings, resultingRequest.BookFromUtc, resultingRequest.BookToUtc);
+                if (room == null)
+                    throw new Exception("Oh boy! Hatter left no room for you.");
+
+                resultingRequest.RoomName = room.Name;
+            }
+
+            return resultingRequest;
+        }
+
+        private Room GetAnyAvailableRoom(IList<Booking> bookings, DateTime dateFrom, DateTime dateTo)
+        {
+            RoomRepository roomRepository = new RoomRepository(_roomsDataFile);
+            IList<Room> rooms = roomRepository.List();
+
+            foreach (Room room in rooms)
+            {
+                if (!room.ExplicitBooking)
+                {
+                    Booking booking = GetBooking(bookings, dateFrom, dateTo, room.Name);
+                    if (booking == null)
+                        return room;
+                }
+            }
+
+            return null;
         }
 
         private Booking GetBooking(IList<Booking> bookings, DateTime dateFrom, DateTime dateTo, string roomName)

@@ -1,18 +1,18 @@
 [
   {
     "Name": "Room 1",
-    "CanBookExplicitely": "true"
+    "ExplicitBooking": "true"
   },
   {
     "Name": "Room 2",
-    "CanBookExplicitely": "false"
+    "ExplicitBooking": "false"
   },
   {
     "Name": "Room 3",
-    "CanBookExplicitely": "false"
+    "ExplicitBooking": "false"
   },
   {
     "Name": "Room 4",
-    "CanBookExplicitely": "false"
+    "ExplicitBooking": "false"
   }
 ]

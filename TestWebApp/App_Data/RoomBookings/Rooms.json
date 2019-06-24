@@ -1,18 +1,26 @@
 [
   {
-    "Name": "Room 1",
-    "CanBookExplicitely": "true"
+    "Name": "Training room",
+    "ExplicitBooking": "true"
   },
   {
-    "Name": "Room 2",
-    "CanBookExplicitely": "false"
+    "Name": "Amsterdam",
+    "ExplicitBooking": "true"
   },
   {
-    "Name": "Room 3",
-    "CanBookExplicitely": "false"
+    "Name": "Utrecht",
+    "ExplicitBooking": "false"
   },
   {
-    "Name": "Room 4",
-    "CanBookExplicitely": "false"
+    "Name": "Hamberg",
+    "ExplicitBooking": "false"
+  },
+  {
+    "Name": "Eindhoven",
+    "ExplicitBooking": "false"
+  },
+  {
+    "Name": "Koln",
+    "ExplicitBooking": "false"
   }
 ]

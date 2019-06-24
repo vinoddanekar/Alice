@@ -63,6 +63,7 @@
     <Compile Include="BookingRepository.cs" />
     <Compile Include="BookingRequest.cs" />
     <Compile Include="BookingRequestProvider.cs" />
+    <Compile Include="BookingRequestValidator.cs" />
     <Compile Include="CancellationRequestsBuilder.cs" />
     <Compile Include="BookingRequestsBuilder.cs" />
     <Compile Include="Config.cs" />
