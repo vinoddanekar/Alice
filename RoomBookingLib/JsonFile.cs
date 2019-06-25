@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace RoomBookingLib
+namespace RoomBookingExtension
 {
     static class JsonFile<T>
     {

@@ -111,9 +111,9 @@
       <Project>{68518e96-e438-4dd3-9713-fdb9967c2f72}</Project>
       <Name>Alice.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\RoomBookingLib\RoomBookingLib.csproj">
+    <ProjectReference Include="..\RoomBookingLib\RoomBookingExtension.csproj">
       <Project>{080654f0-db3d-488c-8782-461b1ac861e6}</Project>
-      <Name>RoomBookingLib</Name>
+      <Name>RoomBookingExtension</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

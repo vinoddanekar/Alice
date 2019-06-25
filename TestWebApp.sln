@@ -9,11 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alice.Common", "Alice.Commo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alice.Framework", "Alice.Framework\Alice.Framework.csproj", "{68518E96-E438-4DD3-9713-FDB9967C2F72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBookingLib", "RoomBookingLib\RoomBookingLib.csproj", "{080654F0-DB3D-488C-8782-461B1AC861E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomBookingExtension", "RoomBookingLib\RoomBookingExtension.csproj", "{080654F0-DB3D-488C-8782-461B1AC861E6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Alice.Tests", "Alice.Tests\Alice.Tests.csproj", "{857B9560-3C2E-4DD9-9C09-7D50BDD50AFC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomBookingLib.Tests", "RoomBookingLib.Tests\RoomBookingLib.Tests.csproj", "{5F208766-1548-4FE7-B057-E85098E9345B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomBookingExtension.Tests", "RoomBookingLib.Tests\RoomBookingExtension.Tests.csproj", "{5F208766-1548-4FE7-B057-E85098E9345B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alice.Text.Algorithms", "Alice.Text.Algorithms\Alice.Text.Algorithms.csproj", "{2AC52B05-B44D-4BC8-B2EA-C4691335AB5C}"
 EndProject

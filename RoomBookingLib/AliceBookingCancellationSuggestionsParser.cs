@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Alice.Common;
 
-namespace RoomBookingLib
+namespace RoomBookingExtension
 {
     class AliceBookingCancellationSuggestionsParser
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 
-namespace RoomBookingLib
+namespace RoomBookingExtension
 {
     internal class Config
     {

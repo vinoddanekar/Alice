@@ -15,7 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Alice.Common\Alice.Common.csproj" />
     <ProjectReference Include="..\Alice.Framework\Alice.Framework.csproj" />
-    <ProjectReference Include="..\RoomBookingLib\RoomBookingLib.csproj" />
+    <ProjectReference Include="..\RoomBookingLib\RoomBookingExtension.csproj" />
   </ItemGroup>
 
   <ItemGroup>

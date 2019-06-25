@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 
-namespace RoomBookingLib
+namespace RoomBookingExtension
 {
     public class Room
     {

@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using RoomBookingLib;
+using RoomBookingExtension;
 using System;
 using System.Collections.Generic;
 
@@ -12,7 +12,7 @@ namespace Tests
 
         public Tests()
         {
-            string basePath = @"D:\Vinod\repos\Alice\Alice\RoomBookingLib.Tests\TestData";
+            string basePath = @"D:\Vinod\repos\Alice\Alice\RoomBookingExtension.Tests\TestData";
             string bookingDataFile = System.IO.Path.Combine(basePath, "bookings.json");
             string roomsDataFile = System.IO.Path.Combine(basePath, "rooms.json");
             _repository = new BookingRepository(bookingDataFile, roomsDataFile);
