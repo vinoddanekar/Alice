@@ -37,6 +37,14 @@
                 </div>
             </div>
         </div>
+        <div id="aliceError">
+            <div class="response">
+                <div class="aliceResponse errorResponse slide-in-fwd-top ">
+                    <span>Alice:</span> {Message}
+                </div>
+            </div>
+        </div>
+
     </div>
     <form id="form1" runat="server">
     </form>

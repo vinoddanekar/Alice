@@ -20,7 +20,7 @@ namespace RoomBookingExtension
             IAliceResponse response = new AliceResponse();
             IList<Room> rooms = _roomRepository.List();
 
-            AliceRoomListParser parser = new AliceRoomListParser();
+            AliceListRoomParser parser = new AliceListRoomParser();
             response.Message = parser.Parse(rooms);
 
             return response;

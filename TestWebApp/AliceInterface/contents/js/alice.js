@@ -7,8 +7,15 @@ $(document).ready(function () {
     responseBox = $('#responseBox');
     chatBox = $('#chatBox');
     chatBox.focus();
+    attachChatBoxKeyboardEvent();
 
-    $('#chatBox').keydown(function (event) {
+    $(window).resize(function () {
+        adjustLayout();
+    });
+});
+
+function attachChatBoxKeyboardEvent() {
+    chatBox.keydown(function (event) {
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if (keycode === 13) {
             var message = $(this).val();
@@ -27,11 +34,7 @@ $(document).ready(function () {
             $(this).val("");
         }
     });
-
-    $(window).resize(function () {
-        adjustLayout();
-    });
-});
+}
 
 function scrollResponseToBottom() {
     responseBox.animate({
@@ -62,7 +65,7 @@ function showAliceMessage(message) {
 }
 
 function showAliceErrorMessage(message) {
-    var aliceMessageTemplate = $('#aliceMessage');
+    var aliceMessageTemplate = $('#aliceError');
     var aliceMessageTemplateHtml = aliceMessageTemplate.html();
 
     var messageToShow = aliceMessageTemplateHtml.replace('{Message}', message);
@@ -118,16 +121,25 @@ function parseAliceRequestIfAny(responseText) {
     return result;
 }
 
-function autoPlaceRequest(sender) {
+function readRequestFromAnchor(sender) {
     var senderObject = $(sender);
-    var requestText = senderObject.text();
+    var requestText;
+    requestText = senderObject.data('request');
+
+    if (!requestText)
+        requestText = senderObject.text();
+
+    return requestText;
+}
+
+function autoPlaceRequest(sender) {
+    var requestText = readRequestFromAnchor(sender);
     postRequest(requestText);
     return true;
 }
 
 function autoHintRequest(sender) {
-    var senderObject = $(sender);
-    var requestText = senderObject.text();
+    var requestText = readRequestFromAnchor(sender);
     chatBox.val(requestText);
     return true;
 }

@@ -141,6 +141,11 @@
     "Validation": "",
     "ClientAction": "",
     "ServerAction": ""
+  },
+  {
+    "UserMessage": "Have I gone mad?|Am I mad?|do you think I am mad",
+    "ActionSuccessResponse": "I'm afraid so. You're entirely bonkers. But I'll tell you a secret. All the best people are.",
+    "RequestFormat": "soundslike"
   }
 
 ]

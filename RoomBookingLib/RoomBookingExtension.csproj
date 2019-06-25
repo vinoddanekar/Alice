@@ -56,7 +56,7 @@
     <Compile Include="AliceListRoomsRequestHandler.cs" />
     <Compile Include="AliceMyBookingListRequestHandler.cs" />
     <Compile Include="AliceRequestHandler.cs" />
-    <Compile Include="AliceRoomListParser.cs" />
+    <Compile Include="AliceListRoomParser.cs" />
     <Compile Include="AliceUnrecognizedRequestHandler.cs" />
     <Compile Include="BookingFilter.cs" />
     <Compile Include="Booking.cs" />
