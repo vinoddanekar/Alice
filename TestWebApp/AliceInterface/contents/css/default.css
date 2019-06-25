@@ -99,7 +99,9 @@
     margin: 1em 1em 1em 1em;
     padding: 0em 0em 0em 1em;
 }
-
+.successResponse {
+    background-color: #81C784;
+}
 .aliceResponse .aliceRequestMarker {
     font-weight: normal;
     text-decoration: underline;

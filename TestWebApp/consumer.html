@@ -3,12 +3,24 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
-
+    <style type="text/css">
+        .alice-button {
+            position: absolute;
+            top: 7px;
+            right: 270px;
+            background-color: #F06292;
+            border: none;
+            padding: 5px 10px 5px 10px;
+            color: #fff;
+            border-radius: 6px;
+        }
+    </style>
     <script type="text/javascript">
         function showAlice() {
             //window.open('alice/alice-chat.aspx', '', 'width=400px,height=400px');
             openWindowInCenter('aliceinterface/alice-chat.aspx', 'Alice', 400, 400);
         }
+
         function openWindowInCenter(url, title, w, h) {
             // Fixes dual-screen position                         Most browsers      Firefox
             var dualScreenLeft = window.screenLeft != undefined ? window.screenLeft : window.screenX;
@@ -28,6 +40,6 @@
     </script>
 </head>
 <body>
-    <button onclick="javascript: showAlice();">Show Alice</button>
+    <button class="alice-button" onclick="javascript: showAlice();">Show Alice</button>
 </body>
 </html>
