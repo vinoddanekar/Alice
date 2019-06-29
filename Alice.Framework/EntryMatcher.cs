@@ -12,9 +12,9 @@ namespace Alice.Framework
         public bool MatchEntry(Command entry, string message)
         {
             bool matchResult = false;
-            if (entry.RequestFormat == "regex")
+            if (entry.MatchingPattern == "regex")
                 matchResult = MatchRegex(entry, message);
-            else if (entry.RequestFormat == "pattern")
+            else if (entry.MatchingPattern == "pattern")
                 matchResult = MatchRegex(entry, message);
             else
                 matchResult = MatchExact(entry, message);

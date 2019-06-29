@@ -1,18 +1,26 @@
 ﻿//TODO Implement Authentication provider - paused
-//TODO Implement Cancel booking
-
 //TODO Translations + flexible api keys per user
 //TODO maps + directions + tell traffic
 //TODO tell weather
 //TODO generate user keys
 //TODO today in history
-//TODO record unknown quests
+//TODO Fake typing indicator
+//TODO Conversation: options as answers. e.g. What you want to do? (Book room) (Show todays bookings) (Show rooms)
+//TODO Moods:	Angry: When someone talks negative
+				Happy: When someone praises
+				Irritated: When someone repeats requests
+				Bored: When no one talk for an hour at least
+//TODO ask and record questionnaire
 
 //Done Implement add bookie name
 //Done Implement add booking reason
 //Done Search by bookie name
+//Done book any room
+//Done record unknown quests
+//Done Implement Cancel booking
+//Done welcome message
 
-// TODO book any room
+AliceNeeds@123
 
 Jokes
 https://sv443.net/jokeapi

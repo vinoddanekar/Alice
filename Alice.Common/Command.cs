@@ -12,7 +12,7 @@ namespace Alice.Common
         public string Validation { get; set; }
         public string ClientAction { get; set; }
         public string UserRespondedTo { get; set; }
-        public string RequestFormat { get; set; }
+        public string MatchingPattern { get; set; }
 
         public string GetRandomSuccessResponse()
         {

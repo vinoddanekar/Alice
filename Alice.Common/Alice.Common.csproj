@@ -48,6 +48,7 @@
     <Compile Include="AliceRequestParameter.cs" />
     <Compile Include="IUserProfile.cs" />
     <Compile Include="JsonFile.cs" />
+    <Compile Include="UserRequest.cs" />
     <Compile Include="Response.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,7 +1,7 @@
 [
   {
     "UserMessage": "WelcomeMessage",
-    "ActionSuccessResponse": "Hello"
+    "ActionSuccessResponse": "Hello|Hi|Hey, how may I help you?|Hey, how are you?|Hey, how are you doing?"
   },
   {
     "UserMessage": "what can you do?|what you do?",

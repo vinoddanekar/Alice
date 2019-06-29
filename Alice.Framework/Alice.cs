@@ -5,6 +5,13 @@ namespace Alice.Framework
 {
     public class Alice
     {
+        public IAliceResponse Ask(UserRequest request)
+        {
+            IAliceResponse response;
+            response = ProcessMessage(request.Message);
+            return response;
+        }
+
         public IAliceResponse Ask(string userMessage)
         {
             IAliceResponse response;

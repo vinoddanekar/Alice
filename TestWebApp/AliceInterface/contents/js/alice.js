@@ -61,15 +61,23 @@ function adjustLayout() {
     chatBox.width(expectedWidth + 'px');
 }
 
+function prepareRequest(message) {
+    var request = {};
+    request.Message = message;
+    var requestEncloser = {};
+    requestEncloser.request = request;
+    var requestString = JSON.stringify(requestEncloser);
+    
+    return requestString;
+}
+
 function requestMessageApi(message) {
     var url = "alice-chat.aspx/Ask";
-    message = message.replace("\'", "");
-
-    var jsonRequest = "{message:\'" + message + "\'}";
+    var requestString = prepareRequest(message);
     $.ajax({
         type: "POST",
         url: url,
-        data: jsonRequest,
+        data: requestString,
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: processSuccessResponse,

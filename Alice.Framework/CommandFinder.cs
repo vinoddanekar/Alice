@@ -52,7 +52,7 @@ namespace Alice.Framework
             {
                 currentCommand = commands[entryIndex];
                 TextMatchStrategyFactory textMatchStrategyFactory = new TextMatchStrategyFactory();
-                ITextMatchStrategy strategy = textMatchStrategyFactory.GetStrategy(currentCommand.RequestFormat);
+                ITextMatchStrategy strategy = textMatchStrategyFactory.GetStrategy(currentCommand.MatchingPattern);
 
                 bool isEntryMatched = strategy.Match(userMessage, currentCommand.UserMessage);
 

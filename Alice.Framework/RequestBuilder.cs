@@ -34,7 +34,7 @@ namespace Alice.Framework
 
         private void AddParameters(IAliceRequest request)
         {
-            if (_command.RequestFormat == "regex")
+            if (_command.MatchingPattern == "regex")
             {
                 Regex regex = new Regex(_command.UserMessage, RegexOptions.IgnoreCase);
                 Match match = regex.Match(_userMessage);
