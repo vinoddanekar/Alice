@@ -1,5 +1,9 @@
 [
   {
+    "UserMessage": "WelcomeMessage",
+    "ActionSuccessResponse": "Hello"
+  },
+  {
     "UserMessage": "what can you do?|what you do?",
     "ActionSuccessResponse": "I can book rooms currently"
   },
@@ -15,7 +19,7 @@
   {
     "UserMessage": "how are you|how do you do",
     "ActionSuccessResponse": "I'm fine! Thank you.|Feeling good!",
-    "RequestFormat": "soundslike"
+    "MatchingPattern": "soundslike"
   },
   {
     "UserMessage": "tell me|tell me something",
@@ -49,7 +53,7 @@
   {
     "UserMessage": "who wrote the invisible man?",
     "ActionSuccessResponse": "H. G. Wells",
-    "RequestFormat": "soundslike"
+    "MatchingPattern": "soundslike"
   },
   {
     "UserMessage": "there|hi there?|hi there|are you there?",
@@ -145,7 +149,7 @@
   {
     "UserMessage": "Have I gone mad?|Am I mad?|do you think I am mad",
     "ActionSuccessResponse": "I'm afraid so. You're entirely bonkers. But I'll tell you a secret. All the best people are.",
-    "RequestFormat": "soundslike"
+    "MatchingPattern": "soundslike"
   }
 
 ]

@@ -66,6 +66,7 @@
     <Content Include="AliceInterface\contents\css\default.css" />
     <Content Include="AliceInterface\contents\js\alice.js" />
     <Content Include="AliceInterface\contents\js\jquery-3.4.1.min.js" />
+    <Content Include="AliceInterface\contents\js\keyboard-handler.js" />
     <Content Include="AliceInterface\contents\js\message-queue.js" />
     <Content Include="AliceInterface\default.aspx" />
     <Content Include="App_Data\RoomBookings\Bookings.json" />

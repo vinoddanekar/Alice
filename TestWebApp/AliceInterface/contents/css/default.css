@@ -110,6 +110,26 @@
 .aliceResponse .aliceRequestMarker:hover {
  color:#fff;
 }
+
+.actions {
+    padding: 5px 5px 5px 15px;
+}
+
+a.pill-action {
+    background-color: #fff;
+    border: dashed 1px #BDBDBD;
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 13px;
+    text-decoration: none;
+    color: #666666c7;
+}
+
+a.pill-action.active {
+    border: solid 1px #e91e63;
+    color: #e91e63;
+    background-color: #ed4b8208;
+}
 /************************************************************************
        
 ************************************************************************/

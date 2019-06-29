@@ -10,10 +10,10 @@
 
     <script src="contents/js/jquery-3.4.1.min.js"></script>
     <script src="contents/js/message-queue.js"></script>
+    <script src="contents/js/keyboard-handler.js"></script>
     <script src="contents/js/alice.js"></script>
 </head>
 <body>
-
     <div id="content">
         <div id="header">
             <h3><span class="avatar">A</span> Alice</h3>

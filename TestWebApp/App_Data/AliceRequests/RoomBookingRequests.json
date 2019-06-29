@@ -1,6 +1,6 @@
 [
   {
-    "UserMessage": "book room|room book|book",
+    "UserMessage": "book room|room book",
     "ActionSuccessResponse": "I can't book room this way. Why don't you try one of the following - <br/><a {aliceRequestHint}><i>Book</i> RoomName <i>from</i> 13:30 - 14:00</a><br/><a {aliceRequestHint}><i>Book</i> RoomName <i>on</i> 1-Apr <i>from</i> 13:30 - 14:00</a><br/><a {aliceRequestHint}><i>Book</i> RoomName <i>on</i> 1-Apr <i>from</i> 13:30 to 14:00 <i>for</i> meeting</a><br/>"
 
     /*
@@ -18,7 +18,7 @@
     "UserMessage": "\\b(book)\\s(\\w[\\s\\w]*)\\s(on)\\s(\\w*[\\s-/\\w]*)\\s(from)\\s([A-Za-z0-9:]*)[\\s](to|-)[\\s]([A-Za-z0-9:]*)\\s(for)\\s(\\w[\\s\\w]*)\\b",
     "ActionSuccessResponse": "Booked",
     "ServerAction": "BookRoom",
-    "RequestFormat": "regex"
+    "MatchingPattern": "regex"
   },
 
   /*
@@ -29,7 +29,7 @@
     "UserMessage": "\\b(book)\\s(\\w[\\s\\w]*)\\s(on)\\s(\\w*[\\s-/\\w]*)\\s(from)\\s([A-Za-z0-9:]*)[\\s](to|-)[\\s]([A-Za-z0-9:]*)\\b",
     "ActionSuccessResponse": "Booked",
     "ServerAction": "BookRoom",
-    "RequestFormat": "regex"
+    "MatchingPattern": "regex"
   },
 
   /*
@@ -40,7 +40,7 @@
     "UserMessage": "\\b(book)\\s(\\w[\\s\\w]*)\\s(from)\\s([A-Za-z0-9:]*)[\\s](to|-)[\\s]([A-Za-z0-9:]*)\\s(for)\\s(\\w[\\s\\w]*)\\b",
     "ActionSuccessResponse": "Booked",
     "ServerAction": "BookRoom",
-    "RequestFormat": "regex"
+    "MatchingPattern": "regex"
   },
 
   /*
@@ -51,14 +51,14 @@
     "UserMessage": "\\b(book)\\s(\\w[\\s\\w]*)\\s(from)\\s([A-Za-z0-9:]*)[\\s]{0,}(to|-)[\\s]{0,}([A-Za-z0-9:]*)\\b",
     "ActionSuccessResponse": "Booked",
     "ServerAction": "BookRoom",
-    "RequestFormat": "regex"
+    "MatchingPattern": "regex"
   },
 
   {
     "UserMessage": "cancel|cancel booking|cancel bookings|cancel my booking|cancel my bookings",
     "ActionSuccessResponse": "I can't cancel booking this way. Try following - <br/><a {aliceRequestHint}><i>Cancel my booking on</i> Date <i>from</i> Time <i>of</i> RoomName</a>",
     "ServerAction": "",
-    "RequestFormat": ""
+    "MatchingPattern": ""
     /*
       I can't cancel booking this way. Try following - <br/>
       <a {aliceRequestHint}><i>cancel my booking on</i> Date <i>from</i> Time <i>of</i> RoomName</a>
@@ -73,7 +73,7 @@
     "UserMessage": "\\b(cancel\\smy\\sbooking)\\s(on)\\s(\\w*[\\s-/\\w]*)\\s(from)\\s([A-Za-z0-9:]*)[\\s](of)\\s(\\w[\\s\\w]*)\\b",
     "ActionSuccessResponse": "",
     "ServerAction": "CancelBooking",
-    "RequestFormat": "regex"
+    "MatchingPattern": "regex"
   },
 
   /*
@@ -84,7 +84,7 @@
     "UserMessage": "\\b(list\\sbookings\\son)\\s(\\w*[\\s-/\\w]*)\\b",
     "ActionSuccessResponse": "ServerActionResult",
     "ServerAction": "ListBookings",
-    "RequestFormat": "regex"
+    "MatchingPattern": "regex"
   },
   /*
   Message: show bookings on 1/2
@@ -94,7 +94,7 @@
     "UserMessage": "\\b(show\\sbookings\\son)\\s(\\w*[\\s-/\\w]*)\\b",
     "ActionSuccessResponse": "ServerActionResult",
     "ServerAction": "ListBookings",
-    "RequestFormat": "regex"
+    "MatchingPattern": "regex"
   },
 
   /*
@@ -105,7 +105,7 @@
     "UserMessage": "\\b(show\\smy\\sbookings\\son)\\s(\\w*[\\s-/\\w]*)\\b",
     "ActionSuccessResponse": "ServerActionResult",
     "ServerAction": "ListMyBookings",
-    "RequestFormat": "regex"
+    "MatchingPattern": "regex"
   },
 
   {
@@ -142,6 +142,43 @@ Pattern: (?:show)[ ]{0,}rooms
   {
     "UserMessage": "show rooms|list rooms|display rooms|rooms",
     "ServerAction": "ListRooms",
-    "RequestFormat": "soundslike"
+    "MatchingPattern": "soundslike"
+  },
+
+/*Experimental: Trial to create predefined conversation and perform action in the last*/
+  {
+    "UserMessage": "book",
+    "ServerAction": "BookRoom",
+    "MatchingPattern": "soundslike",
+    "MessageType": "conversation",
+    "ServerActionParameters": "RoomName,BookFrom,BookTo,BookFor",
+    "ServerActionMandatoryParameters": "RoomName,BookFrom,BookTo,BookFor",
+
+    "Conversation": [
+      {
+        "Question": "Which room?",
+        "AnswerType": "chooseone",
+        "AnswerParser": "ListRoomsWithAny",
+        "ParameterName": "RoomName"
+      },
+      {
+        "Question": "When from?",
+        "AnswerType": "any",
+        "AnswerParser": "",
+        "ParameterName": "BookFrom"
+      },
+      {
+        "Question": "When till?",
+        "AnswerType": "any",
+        "AnswerParser": "",
+        "ParameterName": "BookTo"
+      },
+      {
+        "Question": "What you need room for?",
+        "AnswerType": "ChooseOneOrAny",
+        "AnswerParser": "",
+        "ParameterName": "BookFor"
+      }
+    ]
   }
 ]

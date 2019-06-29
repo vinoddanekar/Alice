@@ -7,34 +7,16 @@ $(document).ready(function () {
     responseBox = $('#responseBox');
     chatBox = $('#chatBox');
     chatBox.focus();
-    attachChatBoxKeyboardEvent();
-
+    var keyboardHandler = new KeyBoardHandler();
+    keyboardHandler.chatBox = chatBox;
+    keyboardHandler.postRequestCallBack = postRequest;
+    keyboardHandler.recentMessageQueue = recentMessageQueue;
+    keyboardHandler.handle();
+    requestMessageApi("WelcomeMessage");
     $(window).resize(function () {
         adjustLayout();
     });
 });
-
-function attachChatBoxKeyboardEvent() {
-    chatBox.keydown(function (event) {
-        var keycode = (event.keyCode ? event.keyCode : event.which);
-        if (keycode === 13) {
-            var message = $(this).val();
-            postRequest(message);
-            $(this).val("");
-        }
-        else if (keycode === 38) {
-            var message = recentMessageQueue.Previous();
-            $(this).val(message);
-        }
-        else if (keycode === 40) {
-            var message = recentMessageQueue.Next();
-            $(this).val(message);
-        }
-        else if (keycode === 27) {
-            $(this).val("");
-        }
-    });
-}
 
 function scrollResponseToBottom() {
     responseBox.animate({
@@ -91,9 +73,7 @@ function requestMessageApi(message) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: processSuccessResponse,
-        failure: function (response) {
-            alert(response.d);
-        },
+        failure: processErrorResponse,
         error: processErrorResponse
     });
 }
