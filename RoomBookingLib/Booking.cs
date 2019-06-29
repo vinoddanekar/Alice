@@ -29,5 +29,23 @@ namespace RoomBookingExtension
             return range;
         }
 
+        public string BookedForToString()
+        {
+            if (!string.IsNullOrEmpty(BookedFor))
+                return BookedFor;
+
+            return "unkown reason";
+        }
+
+        public string BookedByString(Alice.Common.IUserProfile userProfile)
+        {
+            string userName = BookedBy;
+            if (string.IsNullOrEmpty(userName))
+                userName = "Someone";
+            else if (userName.Equals(userProfile.UserName, StringComparison.InvariantCultureIgnoreCase))
+                userName = "you";
+
+            return userName;
+        }
     }
 }

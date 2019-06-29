@@ -27,5 +27,4 @@ namespace Alice.Common
             ActionToPerform = actionToPerform;
         }
     }
-
 }

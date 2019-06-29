@@ -30,16 +30,8 @@ namespace RoomBookingExtension
         private void AppendBookingItem(Booking booking, IUserProfile userProfile, StringBuilder sb)
         {
             sb.AppendFormat("{0} <i>is booked from</i> {1}", booking.RoomName, booking.BookRangeLocalToString(userProfile.TimeZoneInfo));
-            if (string.IsNullOrWhiteSpace(booking.BookedFor))
-                sb.Append(" <i>for</i> something");
-            else
-                sb.AppendFormat(" <i>for</i> {0}", booking.BookedFor);
-
-            if (string.IsNullOrWhiteSpace(booking.BookedBy))
-                sb.Append(" <i>by</i> someone");
-            else
-                sb.AppendFormat(" <i>by</i> {0}", booking.BookedBy);
+            sb.AppendFormat(" <i>for</i> {0}", booking.BookedForToString());
+            sb.AppendFormat(" <i>by</i> {0}", booking.BookedByString(userProfile));
         }
-
     }
 }

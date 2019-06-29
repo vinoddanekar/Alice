@@ -26,12 +26,12 @@ namespace RoomBookingExtension
             try
             {
                 booking = _bookingRepository.Book(bookingRequest);
-                response.Message = string.Format("{0} was booked for you from {1} for {2}", booking.RoomName, booking.BookRangeLocalToString(aliceRequest.UserProfile.TimeZoneInfo), booking.BookedFor);
+                response.Message = string.Format("{0} was booked by you from {1} for {2}", booking.RoomName, booking.BookRangeLocalToString(aliceRequest.UserProfile.TimeZoneInfo), booking.BookedForToString());
             }
             catch (Exception ex)
             {
                 response.StatusCode = System.Net.HttpStatusCode.BadRequest;
-                response.Message = "Error: " + ex.Message;
+                response.Message = ex.Message;
             }
 
             return response;

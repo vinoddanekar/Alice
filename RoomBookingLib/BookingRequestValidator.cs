@@ -24,7 +24,7 @@ namespace RoomBookingExtension
             if (bookingRequest.BookFromUtc < DateTime.UtcNow)
             {
                 IsValid = false;
-                ValidationError = "Booking for past time is not allowed.";
+                ValidationError = "Look..., I dont have time machine to go back and book it for you. You need to book room for future time only.";
             }
             else if (bookingRequest.BookToUtc.Subtract(bookingRequest.BookFromUtc).TotalMinutes < 5)
             {
