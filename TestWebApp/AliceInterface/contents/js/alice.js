@@ -105,7 +105,7 @@ function processSuccessResponse(response) {
 
 function parseAliceRequestIfAny(responseText) {
     var result = responseText.replace(/{aliceRequestAct}/g, "class=\"aliceRequestMarker\" href=\"#\" onclick=\"javascript:autoPlaceRequest(this);\"");
-    result = responseText.replace(/{aliceRequestHint}/g, "class=\"aliceRequestMarker\" href=\"#\" onclick=\"javascript:autoHintRequest(this);\"");
+    result = result.replace(/{aliceRequestHint}/g, "class=\"aliceRequestMarker\" href=\"#\" onclick=\"javascript:autoHintRequest(this);\"");
     return result;
 }
 

@@ -107,3 +107,28 @@ how will be weather by 6pm?
 
 will it rain in the evening?
 will it rain in evening?
+
+/********************************/
+Task management
+/********************************/
+Start task X/working on X/started working on X
+Pause/paused - pauses current task
+paused waiting for vinod to complete his task
+Completed - completes current task
+Completed X - completes X task, reports PM (A completed task X in 50 minutes (from a,b))
+ - Did you self review your task? 
+ - Yes (send report now)
+ - I informed a,b,c
+
+Show my tasks pending
+Show my tasks completed this week,last week, this month,last month
+Report my tasks - reports tasks to manager
+
+**interactive**
+Send task to vinod mytaskname
+Send task to vinod mytaskname complete till date time
+Send task to vinod mytaskname complete within 30 minutes
+Send task to vinod mytaskname must complete within 30 minutes
+ - alice takes follow up
+Report to: a,b,c
+

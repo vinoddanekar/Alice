@@ -1,5 +1,9 @@
 [
   {
+    "UserMessage": "help",
+    "ActionSuccessResponse": "Show <a {aliceRequestAct}>Room booking help</a>"
+  },
+  {
     "UserMessage": "WelcomeMessage",
     "ActionSuccessResponse": "Hello|Hi|Hey, how may I help you?|Hey, how are you?|Hey, how are you doing?"
   },
@@ -37,6 +41,7 @@
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",
     "Validation": "",
+    "MatchingPattern": "soundslike",
     "ClientAction": "",
     "ServerAction": ""
   },

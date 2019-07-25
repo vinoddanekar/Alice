@@ -36,7 +36,7 @@ namespace Alice.Framework
             repository.Add(unhandledMessage);
 
             IAliceResponse response = new AliceResponse();
-            response.Message = "I did not get it but noted down. I will learn it soon.";
+            response.Message = "I did not get it but noted down. I will learn it soon. Show <a {aliceRequestAct}>Help</a>";
             return response;
         }
     }

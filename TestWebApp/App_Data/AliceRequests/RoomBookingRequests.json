@@ -1,5 +1,21 @@
 [
   {
+    "UserMessage": "room booking help",
+    "ActionSuccessResponse": "<a {aliceRequestHint}>Show rooms</a><br/>      <a {aliceRequestHint}>Show bookings</a><br/>      <a {aliceRequestHint}>Show bookings on today</a><br/>      <a {aliceRequestHint}>Show my bookings on today</a><br/>      <a {aliceRequestHint}><i>Book</i> RoomName <i>from</i> 13:30 - 14:00</a><br/>      <a {aliceRequestHint}><i>Book</i> RoomName <i>on</i> 1-Apr <i>from</i> 13:30 - 14:00</a><br/>      <a {aliceRequestHint}><i>Book</i> RoomName <i>on</i> 1-Apr <i>from</i> 13:30 to 14:00 <i>for</i> meeting</a><br/>      <a {aliceRequestHint}><i>Cancel my booking on</i> Today <i>from</i> 12pm <i>of</i> Amsterdam</a>"
+
+    /*
+      <a {aliceRequestHint}>Show rooms</a><br/>
+      <a {aliceRequestHint}>Show bookings</a><br/>
+      <a {aliceRequestHint}>Show bookings on today</a><br/>
+      <a {aliceRequestHint}>Show my bookings on today</a><br/>
+      <a {aliceRequestHint}><i>Book</i> RoomName <i>from</i> 13:30 - 14:00</a><br/>
+      <a {aliceRequestHint}><i>Book</i> RoomName <i>on</i> 1-Apr <i>from</i> 13:30 - 14:00</a><br/>
+      <a {aliceRequestHint}><i>Book</i> RoomName <i>on</i> 1-Apr <i>from</i> 13:30 to 14:00 <i>for</i> meeting</a><br/>
+      <a {aliceRequestHint}><i>Cancel my booking on</i> Today <i>from</i> 12pm <i>of</i> Amsterdam</a>
+   
+    */
+  },
+  {
     "UserMessage": "book room|room book",
     "ActionSuccessResponse": "I can't book room this way. Why don't you try one of the following - <br/><a {aliceRequestHint}><i>Book</i> RoomName <i>from</i> 13:30 - 14:00</a><br/><a {aliceRequestHint}><i>Book</i> RoomName <i>on</i> 1-Apr <i>from</i> 13:30 - 14:00</a><br/><a {aliceRequestHint}><i>Book</i> RoomName <i>on</i> 1-Apr <i>from</i> 13:30 to 14:00 <i>for</i> meeting</a><br/>"
 
@@ -145,7 +161,7 @@ Pattern: (?:show)[ ]{0,}rooms
     "MatchingPattern": "soundslike"
   },
 
-/*Experimental: Trial to create predefined conversation and perform action in the last*/
+  /*Experimental: Trial to create predefined conversation and perform action in the last*/
   {
     "UserMessage": "book",
     "ServerAction": "BookRoom",
