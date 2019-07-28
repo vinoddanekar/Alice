@@ -129,6 +129,7 @@ function autoPlaceRequest(sender) {
 function autoHintRequest(sender) {
     var requestText = readRequestFromAnchor(sender);
     chatBox.val(requestText);
+    chatBox.focus();
     return true;
 }
 

@@ -53,7 +53,7 @@
     padding: 2px;
     outline: none;
     font-size: 24px;
-    border: none 2px #81d4fa87;
+    border: none;
     border-radius: 6px;
     background-color: #eee;
 }
@@ -80,11 +80,11 @@
     color: #757575;
 }
 
-    .aliceResponse {
-        background-color: #e91e63cc;
-        /* border: 1px dotted #E91E63; */
-        color: #FAFAFA;
-    }
+.aliceResponse {
+    background-color: #ed4b82;
+    /* border: 1px dotted #E91E63; */
+    color: #FAFAFA;
+}
 
 .aliceResponse span, .userResponse span {
         font-weight: bold;
@@ -105,7 +105,7 @@
 .aliceResponse .aliceRequestMarker {
     font-weight: normal;
     text-decoration: underline;
-    color: #fafafaeb;
+    color: #eeeeee;
 }
 .aliceResponse .aliceRequestMarker:hover {
  color:#fff;
@@ -122,13 +122,13 @@ a.pill-action {
     padding: 3px 10px;
     border-radius: 13px;
     text-decoration: none;
-    color: #666666c7;
+    color: #666666;
 }
 
 a.pill-action.active {
     border: solid 1px #e91e63;
     color: #e91e63;
-    background-color: #ed4b8208;
+    background-color: #ed4b82;
 }
 /************************************************************************
        
