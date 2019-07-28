@@ -23,7 +23,8 @@
   {
     "UserMessage": "how are you|how do you do",
     "ActionSuccessResponse": "I'm fine! Thank you.|Feeling good!",
-    "MatchingPattern": "soundslike"
+    "MatchingPattern": "
+      "
   },
   {
     "UserMessage": "tell me|tell me something",

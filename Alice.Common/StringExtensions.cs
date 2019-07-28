@@ -28,8 +28,8 @@
         private static string GetSound(string text)
         {
             string textLowered = text.ToLower();
-            char firstLetter = text[0];
-            string remainingString = text.Substring(1);
+            char firstLetter = textLowered[0];
+            string remainingString = textLowered.Substring(1);
 
             string spacesRemoved = remainingString.Replace(" ", string.Empty);
             string vowelsReplaced = ReplaceVowels(spacesRemoved);

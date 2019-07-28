@@ -37,7 +37,7 @@ namespace RoomBookingExtension
                 if (room == null)
                 {
                     IsValid = false;
-                    ValidationError = string.Format("Oh! I can't book it. There is no room with name <i>{0}</i>. Type <a {{aliceRequest}}>Show rooms</a> to show rooms.", bookingRequest.RoomName);
+                    ValidationError = string.Format("Oh! I can't book it. There is no room with name <i>{0}</i>. Type <a {{aliceRequestAct}}>Show rooms</a> to show rooms.", bookingRequest.RoomName);
                 }
             }
 

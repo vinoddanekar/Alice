@@ -55,31 +55,28 @@ namespace Alice.Common
             input = input.ToLower();
             bool result = true;
             output = DateTime.MinValue;
-            switch (input)
+            DateTime currentDate = DateTime.Now.Date;
+
+            if (input.SoundsLike("today"))
+                output = currentDate;
+            else if (input.SoundsLike("tomorrow") || input.SoundsLike("tom"))
+                output = currentDate.AddDays(1);
+            else if (input.SoundsLike("day after tomorrow") || input.SoundsLike("day after tom"))
+                output = currentDate.AddDays(2);
+            else if (input.StartsWith("next"))
             {
-                case "today":
-                    output = DateTime.Now.Date;
-                    break;
 
-                case "tom":
-                case "tomm":
-                case "tomorrow":
-                    output = DateTime.Now.Date.AddDays(1);
-                    break;
-
-                case "day after tom":
-                case "day after tomm":
-                case "day after tomorrow":
-                    output = DateTime.Now.Date.AddDays(2);
-                    break;
-
-                default:
-                    result = false;
-                    break;
             }
-
+            else
+                result = false;
+            
             return result;
         }
+
+        //private static DateTime GetDateFromNextWeekDay(DateTime currentDate, string day)
+        //{
+            
+        //}
 
         private static string ConvertToDateFormat(string input)
         {

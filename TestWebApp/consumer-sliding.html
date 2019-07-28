@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="AliceInterface/contents/js/jquery-3.4.1.min.js"></script>
+
+    <style type="text/css">
+        .alice-container {
+            right: 0px;
+            top: 0px;
+            position: fixed;
+        }
+        .alice-frame{
+            border:none;
+        }
+        .alice-container-collapsed {
+            box-shadow: none;
+            border-left: 5px solid #E91E63;
+        }
+        .alice-container-expanded {
+            border-left: none;
+            box-shadow: -1px -1px 10px -1px #aaa;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var aliceContainer = new AliceContainer();
+            aliceContainer.initialize();
+        });
+
+        var AliceContainerState = { 'Collapsed': 0, 'Expanded': 1 };
+
+        var AliceContainer = function () {
+            this.containerElement = $('.alice-container');
+            this.frameElement = $('.alice-frame');
+            this.state = AliceContainerState.Collapsed;
+            this.expandedWidth = 450;
+            this.collapsedWidth = 0;
+        }
+
+        AliceContainer.prototype.initialize = function () {
+            this.attachHoverEvents();
+            this.resetLayout();
+            this.collapse();
+        }
+
+        AliceContainer.prototype.attachHoverEvents = function () {
+            var aliceContainer = this;
+            this.containerElement.mouseenter(function () {
+                if (aliceContainer.state == AliceContainerState.Collapsed) {
+                    aliceContainer.expand();
+                }
+            });
+
+            this.containerElement.mouseleave(function () {
+                if (aliceContainer.state == AliceContainerState.Expanded) {
+                    aliceContainer.collapse();
+                }
+            });
+        }
+
+        AliceContainer.prototype.attachResizeEvent = function () {
+            var aliceContainer = this;
+            $(window).resize(function () {
+                aliceContainer.resetLayout();
+            });
+        }
+
+        AliceContainer.prototype.resetLayout = function () {
+            var windowHeight = $(window).height();
+            this.containerElement.height(windowHeight);
+            this.frameElement.width(this.containerElement.width());
+            this.frameElement.height(this.containerElement.height());
+        }
+
+        AliceContainer.prototype.expand = function () {
+            this.containerElement.width(this.expandedWidth);
+            this.state = AliceContainerState.Expanded;
+            this.containerElement.addClass('alice-container-expanded');
+            this.containerElement.removeClass('alice-container-collapsed');
+            this.resetLayout();
+        }
+
+        AliceContainer.prototype.collapse = function () {
+            this.containerElement.width(this.collapsedWidth);
+            this.state = AliceContainerState.Collapsed;
+            this.containerElement.addClass('alice-container-collapsed');
+            this.containerElement.removeClass('alice-container-expanded');
+            this.resetLayout();
+        }
+
+    </script>
+</head>
+<body>
+    <div class="alice-container">
+        <iframe class="alice-frame" src="AliceInterface/alice-chat.aspx"></iframe>
+    </div>
+</body>
+</html>

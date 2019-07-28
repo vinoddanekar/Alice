@@ -15,6 +15,7 @@ namespace RoomBookingExtension
 
             sb.Append("<ol>");
             string item, command;
+            
             foreach (Room room in rooms)
             {
                 sb.Append("<li>");
