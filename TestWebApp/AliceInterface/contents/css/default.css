@@ -104,9 +104,16 @@
 }
 .aliceResponse .aliceRequestMarker {
     font-weight: normal;
-    text-decoration: underline;
     color: #eeeeee;
 }
+.aliceResponse .aliceRequestAct {
+    text-decoration: underline;
+}
+.aliceResponse .aliceRequestHint {
+    text-decoration: none;
+    border-bottom:1px dotted #eee;
+}
+
 .aliceResponse .aliceRequestMarker:hover {
  color:#fff;
 }

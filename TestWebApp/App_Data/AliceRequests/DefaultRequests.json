@@ -1,6 +1,6 @@
 [
   {
-    "UserMessage": "help",
+    "UserMessage": "help|?",
     "ActionSuccessResponse": "Show <a {aliceRequestAct}>Room booking help</a>"
   },
   {
