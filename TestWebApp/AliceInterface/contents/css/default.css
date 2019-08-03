@@ -2,6 +2,9 @@
     padding:0px; margin:0px;
     font-family: Verdana;
 }
+textarea {
+    font-family: Verdana;
+}
 #content {
     
 }
@@ -56,6 +59,8 @@
     border: none;
     border-radius: 6px;
     background-color: #eee;
+    resize:none;
+    overflow:hidden;
 }
     #chatBox:hover, #chatBox:focus {
         background-color: #e0e0e0;

@@ -20,7 +20,7 @@
         </div>
         <div id="responseBox">
         </div>
-        <input id="chatBox" placeholder="Ask something..." type="text" autocomplete="off" />
+        <textarea id="chatBox" placeholder="Ask something..." ></textarea>
     </div>
     <div style="display: none">
         <div id="userMessage">

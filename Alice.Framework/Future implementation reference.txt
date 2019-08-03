@@ -11,6 +11,9 @@
 				Irritated: When someone repeats requests
 				Bored: When no one talk for an hour at least
 //TODO ask and record questionnaire
+//TODO Suggested actions for response
+		Icon, text, command
+		repeat booking for next day, cancel booking
 
 //Done Implement add bookie name
 //Done Implement add booking reason
@@ -109,9 +112,10 @@ will it rain in the evening?
 will it rain in evening?
 
 /********************************/
-Task management
+Idea: Task management
 /********************************/
 Start task X/working on X/started working on X
+(Alice can show a time counter in big letters. also time consumed till last session)
 Pause/paused - pauses current task
 paused waiting for vinod to complete his task
 Completed - completes current task
@@ -119,8 +123,10 @@ Completed X - completes X task, reports PM (A completed task X in 50 minutes (fr
  - Did you self review your task? 
  - Yes (send report now)
  - I informed a,b,c
+ (When completed before time alice can congratulate)
 
 Show my tasks pending
+(when no tasks - alice can ping managers that someone is out of task)
 Show my tasks completed this week,last week, this month,last month
 Report my tasks - reports tasks to manager
 

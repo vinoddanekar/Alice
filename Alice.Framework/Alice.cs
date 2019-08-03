@@ -14,6 +14,8 @@ namespace Alice.Framework
 
         public IAliceResponse Ask(string userMessage)
         {
+            userMessage = CleanupRequestMessage(userMessage);
+
             IAliceResponse response;
             response = ProcessMessage(userMessage);
             return response;
@@ -21,6 +23,8 @@ namespace Alice.Framework
 
         private IAliceResponse ProcessMessage(string userMessage)
         {
+            userMessage = CleanupRequestMessage(userMessage);
+
             CommandFinder finder = new CommandFinder();
             Tuple<Command, IAliceRequestHandler> tuple;
             tuple = finder.FindOrDefault(userMessage);
@@ -31,6 +35,18 @@ namespace Alice.Framework
             IAliceResponse response = processor.Process();
 
             return response;
+        }
+
+        private string CleanupRequestMessage(string userMessage)
+        {
+            string result = userMessage;
+            if (result.StartsWith("\n"))
+                result = result.Substring(1, result.Length - 1);
+
+            if (result.EndsWith("\n"))
+                result = result.Substring(0, result.Length - 1);
+            
+            return result;
         }
     }
 }

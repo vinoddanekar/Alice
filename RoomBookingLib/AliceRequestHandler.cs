@@ -36,30 +36,8 @@ namespace RoomBookingExtension
             string serverAction = request.ServerAction.ToLower();
             IInternalRequestHandler handler = null;
 
-            switch (serverAction)
-            {
-                case "listrooms":
-                    handler = new AliceListRoomsRequestHandler(_roomRepository);
-                    break;
-                case "listbookings":
-                    handler = new AliceBookingListRequestHandler(_bookingRepository);
-                    break;
-                case "listmybookings":
-                    handler = new AliceMyBookingListRequestHandler(_bookingRepository);
-                    break;
-                case "bookroom":
-                    handler = new AliceBookRoomRequestHandler(_bookingRepository);
-                    break;
-                case "cancelbooking":
-                    handler = new AliceCancelBookingRequestHandler(_bookingRepository);
-                    break;
-                case "suggestcancellations":
-                    handler = new AliceCancelBookingSuggestionRequestHandler(_bookingRepository);
-                    break;
-                default:
-                    handler = new AliceUnrecognizedRequestHandler();
-                    break;
-            }
+            InternalRequestHandlerFactory factory = new InternalRequestHandlerFactory(_bookingRepository, _roomRepository);
+            handler = factory.GetInternalRequestHandler(serverAction);
 
             IAliceResponse response;
             response = handler.Handle(request);

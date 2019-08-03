@@ -2,6 +2,7 @@
     this.chatBox = null;
     this.postRequestCallBack = null;
     this.recentMessageQueue = null;
+    this.postMessageOnEnterKey = true;
 }
 
 KeyBoardHandler.prototype.handle = function () {
@@ -10,7 +11,7 @@ KeyBoardHandler.prototype.handle = function () {
 
 KeyBoardHandler.prototype.attachChatBoxKeyboardEvent = function() {
     var sender = this;
-    this.chatBox.keydown(function (event) {
+    this.chatBox.keyup(function (event) {
         sender.handleChatBoxKeyboardEvent(sender, event);
     });
 }
@@ -18,9 +19,11 @@ KeyBoardHandler.prototype.attachChatBoxKeyboardEvent = function() {
 KeyBoardHandler.prototype.handleChatBoxKeyboardEvent = function (sender, event) {
     var keycode = (event.keyCode ? event.keyCode : event.which);
     if (keycode === 13) {
-        var message = sender.chatBox.val();
-        sender.postRequestCallBack(message);
-        sender.chatBox.val("");
+        if (sender.postMessageOnEnterKey && event.shiftKey === false) {
+            var message = sender.chatBox.val();
+            sender.postRequestCallBack(message);
+            sender.chatBox.val("");
+        }
     }
     else if (keycode === 38) {
         var message = sender.recentMessageQueue.Previous();
