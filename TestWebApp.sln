@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomBookingExtension.Tests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alice.Text.Algorithms", "Alice.Text.Algorithms\Alice.Text.Algorithms.csproj", "{2AC52B05-B44D-4BC8-B2EA-C4691335AB5C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alice.Tasks", "Alice.Tasks\Alice.Tasks.csproj", "{3AD921F5-7662-4894-8BB0-5FBB4E67D48A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{2AC52B05-B44D-4BC8-B2EA-C4691335AB5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2AC52B05-B44D-4BC8-B2EA-C4691335AB5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2AC52B05-B44D-4BC8-B2EA-C4691335AB5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AD921F5-7662-4894-8BB0-5FBB4E67D48A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AD921F5-7662-4894-8BB0-5FBB4E67D48A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AD921F5-7662-4894-8BB0-5FBB4E67D48A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AD921F5-7662-4894-8BB0-5FBB4E67D48A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -63,7 +63,7 @@ namespace Alice.Common
                 output = currentDate.AddDays(2);
             else if (input.StartsWith("next"))
             {
-
+                //TODO Implement next weekday
             }
             else
                 result = false;

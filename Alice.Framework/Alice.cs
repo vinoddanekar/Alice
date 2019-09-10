@@ -15,9 +15,9 @@ namespace Alice.Framework
         public IAliceResponse Ask(string userMessage)
         {
             userMessage = CleanupRequestMessage(userMessage);
-
             IAliceResponse response;
             response = ProcessMessage(userMessage);
+
             return response;
         }
 
@@ -45,6 +45,9 @@ namespace Alice.Framework
 
             if (result.EndsWith("\n"))
                 result = result.Substring(0, result.Length - 1);
+
+            // Quick fix to avoid \n in request. Later it should split request
+            result = result.Replace("\n", string.Empty);
             
             return result;
         }

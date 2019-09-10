@@ -150,3 +150,16 @@ alice.ask(request)
 
 .SecurityToken = base64(emailid+' '+password+' '+validfrom+' '+validto)
 
+******************************************************************
+* Tasks for self
+******************************************************************
+TODO Automise staging deployment
+REMEMBER [TO] Automise staging deployment
+TODO BY <TIME> Automise staging deployment
+TODO DATE <DATE> BY <TIME> Automise staging deployment
+TODO Automise staging deployment BY <TIME>
+TODO Automise staging deployment DATE <DATE> BY <TIME>
+
+SHOW MY TODOS
+SHOW TODOS
+SHOW TASKS
