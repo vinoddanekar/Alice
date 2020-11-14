@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alice.Text.Algorithms", "Al
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Alice.Tasks", "Alice.Tasks\Alice.Tasks.csproj", "{3AD921F5-7662-4894-8BB0-5FBB4E67D48A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitBuddy", "GitBuddy\GitBuddy.csproj", "{E8BC7001-8608-41BB-AE66-83A6AA8762CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{3AD921F5-7662-4894-8BB0-5FBB4E67D48A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AD921F5-7662-4894-8BB0-5FBB4E67D48A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AD921F5-7662-4894-8BB0-5FBB4E67D48A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8BC7001-8608-41BB-AE66-83A6AA8762CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8BC7001-8608-41BB-AE66-83A6AA8762CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8BC7001-8608-41BB-AE66-83A6AA8762CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8BC7001-8608-41BB-AE66-83A6AA8762CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

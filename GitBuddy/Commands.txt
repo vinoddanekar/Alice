@@ -1,0 +1,11 @@
+﻿
+
+Create branch my-feature from release
+Create dev branch from it
+Show branches
+setup git account:
+q: username
+q: password
+q: url
+create mr [lists branches]
+create mr from x to y

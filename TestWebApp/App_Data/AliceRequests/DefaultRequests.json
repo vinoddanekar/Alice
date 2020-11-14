@@ -23,8 +23,7 @@
   {
     "UserMessage": "how are you|how do you do",
     "ActionSuccessResponse": "I'm fine! Thank you.|Feeling good!",
-    "MatchingPattern": "
-      "
+    "MatchingPattern": ""
   },
   {
     "UserMessage": "tell me|tell me something",
@@ -37,7 +36,7 @@
   },
 
   {
-    "UserMessage": "i'm fine|im good|im ok",
+    "UserMessage": "i'm fine|im good|im ok|good|ok|fine",
     "ActionSuccessResponse": "Great! What can I help you with?",
     "ActionFailureResponse": "",
     "ValidationFailureResponse": "",

@@ -27,7 +27,7 @@ namespace Alice.Framework
             return response;
         }
 
-        public IAliceResponse AddToUnhandled()
+        private IAliceResponse AddToUnhandled()
         {
             UnhandledMessage unhandledMessage = new UnhandledMessage();
             unhandledMessage.UserMessage = _aliceRequest.RequestMessage;
